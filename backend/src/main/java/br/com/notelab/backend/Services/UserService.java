@@ -11,7 +11,12 @@ import br.com.notelab.backend.Model.User;
 public class UserService {
     List<User> users = new ArrayList<>();
 
-    public void userRegister(User user) {
+    public User userRegister(User user) {
         users.add(user);
+        return user;
+    }
+
+    public List<User> getUsers() {
+        return users;
     }
 }

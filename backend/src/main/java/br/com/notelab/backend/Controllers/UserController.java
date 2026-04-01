@@ -4,8 +4,9 @@ import org.springframework.stereotype.Controller;
 
 import br.com.notelab.backend.Model.User;
 import br.com.notelab.backend.Services.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -17,10 +18,14 @@ public class UserController {
         this.users = users;
     }
 
-    @PostMapping("/")
-    public User userRegister(User user) {
+    @PostMapping("/register")
+    public User userRegister(@RequestBody User user) {
         users.userRegister(user);
         return user;
     }
-    
+
+    @GetMapping("/users")
+    public List<User> getUsers() {
+        return users.getUsers();
+    }
 }
