@@ -1,10 +1,24 @@
 package br.com.notelab.backend.Model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "usuarios")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false)
     private String password;
+
+    public User() {};
 
     public User(Long id, String name, String email, String password) {
         this.id = id;
