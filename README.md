@@ -3,10 +3,10 @@
 Uma aplicação web moderna para gerenciar cadernos e anotações de aulas. Organize suas notas por matérias, crie anotações detalhadas com formatação rica e tenha acesso a seus estudos de qualquer lugar.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Java](https://img.shields.io/badge/Java-11+-orange)
+![Java](https://img.shields.io/badge/Java-21+-orange)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-green)
-![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14+-336791)
+![React](https://img.shields.io/badge/React-19+-61DAFB?logo=react)
+![MySQL](https://img.shields.io/badge/MYSQL-336791)
 
 ## 🎯 Visão Geral
 
