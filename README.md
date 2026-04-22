@@ -45,9 +45,9 @@ O Caderno Online é uma plataforma que permite aos estudantes:
 
 
 ## 🛠️ Stack Tecnológico
-Backend: Java, Spring Boot, Spring Security, PostgreSQL, JWT
+Backend: Java, Spring Boot, Spring Security, MySQL, JWT
 
-Frontend: React, React Router, Axios, Context API
+Frontend: React, React Router, Context API
 
 
 ## 📚 Documentação das APIs
