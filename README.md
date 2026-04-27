@@ -1,5 +1,3 @@
-# NoteLab
-=======
 # 📚 NoteLab
 
 Uma aplicação web moderna para gerenciar cadernos e anotações de aulas. Organize suas notas por matérias, crie anotações detalhadas com formatação rica e tenha acesso a seus estudos de qualquer lugar.
