@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # NoteLab
 =======
 # 📚 NoteLab
@@ -99,4 +98,3 @@ Para suporte, entre em contato através de:
 ---
 
 **Desenvolvido com ❤️ por equipe KM**
->>>>>>> 878f654222c35d7c6249cec9849cbb7e74a907ea
