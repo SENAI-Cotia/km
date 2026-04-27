@@ -1,8 +1,16 @@
 package br.com.notelab.backend.Model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "matter")
 public class Matter {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private Long userId;
+    @Column(nullable = false)
     private String name;
 
     public Matter(Long id, Long userId, String name) {
@@ -34,6 +42,4 @@ public class Matter {
     public void setName(String name) {
         this.name = name;
     }
-
-    
 }
