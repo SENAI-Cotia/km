@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <link rel="stylesheet" href="login.css">-->
+<!--    <link rel="stylesheet" href="../reset.css">-->
+    <title>Login</title>
+</head>
+<body>
+
+<div class="containerLogo">
+    <img src="#" alt="notelab-logo">
+</div>
+
+<section class="containerInfo">
+    <div class="formCabecalho">
+        <h1>Entrar</h1>
+        <p>Acesse suas anotações</p>
+    </div>
+
+    <div class="card">
+
+        <form class="form" th:object="${user}" method="post" th:action=" @{/logar}">
+            <div class="formbox">
+                <label>Digite seu e-mail</label>
+                <input type="email" placeholder="email@email.com" th:field="*{email}">
+            </div>
+            <div class="formbox">
+                <label>Senha</label>
+                <input type="password" placeholder="senha" th:field="*{password}">
+
+            </div>
+            <button class="btn" type="submit">Entrar</button>
+        </form>
+
+
+    </div>
+</section>
+</body>
+</html>
