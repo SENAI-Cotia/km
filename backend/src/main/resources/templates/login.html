@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--    <link rel="stylesheet" href="login.css">-->
-<!--    <link rel="stylesheet" href="../reset.css">-->
-    <title>Login</title>
+
+    <link rel="stylesheet" th:href="@{loginRegister.css}">
+    <link rel="stylesheet" th:href="@{reset.css}">
+    <title>NoteLab</title>
 </head>
 <body>
 
 <div class="containerLogo">
-    <img src="#" alt="notelab-logo">
+    <img src=".././img/logo.png" alt="notelab-logo">
 </div>
 
 <section class="containerInfo">
@@ -21,7 +22,7 @@
 
     <div class="card">
 
-        <form class="form" th:object="${user}" method="post" th:action=" @{/logar}">
+        <form class="formDiv" th:object="${user}" method="post" th:action=" @{/logar}">
             <div class="formbox">
                 <label>Digite seu e-mail</label>
                 <input type="email" placeholder="email@email.com" th:field="*{email}">
@@ -31,9 +32,11 @@
                 <input type="password" placeholder="senha" th:field="*{password}">
 
             </div>
-            <button class="btn" type="submit">Entrar</button>
+            <div class="registerDiv">
+                Não tem conta? <a th:href="@{/register}"> Cadastre-se</a>
+            </div>
+            <div class="btnDiv"><button class="btn" type="submit">Entrar</button></div>
         </form>
-
 
     </div>
 </section>
