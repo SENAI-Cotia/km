@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" th:href="@{login.css}">
+    <link rel="stylesheet" th:href="@{loginRegister.css}">
     <link rel="stylesheet" th:href="@{reset.css}">
-    <title>Login</title>
+    <title>NoteLab</title>
 </head>
 <body>
 
@@ -33,11 +33,10 @@
 
             </div>
             <div class="registerDiv">
-                Não tem conta? <a href="">Registre-se</a>
+                Não tem conta? <a th:href="@{/register}"> Cadastre-se</a>
             </div>
             <div class="btnDiv"><button class="btn" type="submit">Entrar</button></div>
         </form>
-
 
     </div>
 </section>

@@ -18,6 +18,17 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Transient
+    private String confirmPassword;
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
     public User() {};
 
     public User(Long id, String name, String email, String password) {
@@ -25,6 +36,7 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.confirmPassword = confirmPassword;
     }
 
     public Long getId() {

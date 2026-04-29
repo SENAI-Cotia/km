@@ -6,11 +6,10 @@
     --var-Corplaceholder:#79797979;
 }
 
-
 .containerLogo{
     margin-bottom: 20px;
-    
 }
+
 body{
     background-color: var(--var-corDoFundo);
     height: 100vh;
@@ -85,7 +84,6 @@ body{
     text-decoration: none;
 }
 
-
 .btnDiv{
     margin: auto 0;
     text-align: center;
@@ -100,6 +98,7 @@ body{
     border-radius: 5px;
     border: none;
     cursor: pointer;
+    font-weight: 600;
 }
 
 .btn:hover{
