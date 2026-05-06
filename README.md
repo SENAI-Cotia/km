@@ -5,7 +5,6 @@ Uma aplicação web moderna para gerenciar cadernos e anotações de aulas. Orga
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Java](https://img.shields.io/badge/Java-21+-orange)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-green)
-![React](https://img.shields.io/badge/React-19+-61DAFB?logo=react)
 ![MySQL](https://img.shields.io/badge/MYSQL-336791)
 
 ## 🎯 Visão Geral
@@ -47,7 +46,7 @@ O Caderno Online é uma plataforma que permite aos estudantes:
 ## 🛠️ Stack Tecnológico
 Backend: Java, Spring Boot, Spring Security, MySQL, JWT
 
-Frontend: React, React Router, Context API
+Frontend: HTML, CSS
 
 
 ## 📚 Documentação das APIs
