@@ -20,28 +20,28 @@ public class UserController {
         this.service = service;
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<?> userRegister(@RequestBody User user) {
-       try {
-           User newUser = service.userRegister(user);
-           return ResponseEntity.ok(newUser);
-       } catch (RuntimeException e) {
-           return ResponseEntity.badRequest().body(e.getMessage());
-       }
+    @GetMapping("/register")
+    public String paginaDeCadastro(Model model) {
+        model.addAttribute("user", new User());
+        return "register";
     }
 
-   // @PostMapping("/login")
-    //public ResponseEntity<?> userLogin(@RequestBody User user) {
-      //  try {
-        //    User login = service.userLogin(
-//                    user.getEmail(),
-//                    user.getPassword()
-//            );
-//            return ResponseEntity.ok(login);
-//        } catch (RuntimeException e) {
-//            return ResponseEntity.badRequest().body(e.getMessage());
-//        }
-//    }
+    @PostMapping("/registrar")
+    public String userRegister(@ModelAttribute User user, Model model) {
+        try {
+            if(!user.getPassword().equals(user.getConfirmPassword())){
+                throw new RuntimeException("Senhas não conferem");
+            }
+
+            service.userRegister(user);
+
+            return "redirect:/login";
+
+        } catch (RuntimeException e) {
+            model.addAttribute("erro", e.getMessage());
+            return "register";
+        }
+    }
 
     @GetMapping("/login")
     public String paginaDeLogin(Model model) {

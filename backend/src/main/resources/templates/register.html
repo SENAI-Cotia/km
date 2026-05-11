@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{loginRegister.css}">
+    <link rel="stylesheet" th:href="@{reset.css}">
+    <title>Cadastre-se</title>
+</head>
+<body>
+<div class="containerLogo">
+    <img src=".././login/logo.png" alt="notelab-logo">
+</div>
+
+<section class="containerInfo">
+    <div class="formCabecalho">
+        <h1>Cadastrar</h1>
+        <p>Comece suas anotações</p>
+    </div>
+
+    <div class="card">
+
+        <form class="formDiv" th:object="${user}" method="post" th:action=" @{/registrar}">
+            <div class="formbox">
+                <label>Nome</label>
+                <input type="text" placeholder="nome" th:field="*{name}">
+
+            </div>
+            <div class="formbox">
+                <label>E-mail</label>
+                <input type="email" placeholder="e-mail" th:field="*{email}">
+
+            </div>
+            <div class="formbox">
+                <label>Senha</label>
+                <input type="password" placeholder="senha" th:field="*{password}">
+            </div>
+            <div class="formbox">
+                <label>Confirme a Senha</label>
+                <input type="password" placeholder="senha" th:field="*{confirmPassword}">
+            </div>
+            <p th:if="${erro}" th:text="${erro}"></p>
+
+            <div class="btnDiv">
+                <button class="btn" type="submit" >Cadastrar</button>
+            </div>
+        </form>
+
+    </div>
+</section>
+</body>
+</html>

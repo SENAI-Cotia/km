@@ -1,0 +1,106 @@
+:root{
+    --var-corDoFundo: #e6e3e3;
+    --var-CorContainer: #FAFAFA;
+    --var-CorBtn: #E11D2A;
+    --var-CorBtnHover: #8a121a;
+    --var-Corplaceholder:#79797979;
+}
+
+.containerLogo{
+    margin-bottom: 20px;
+}
+
+body{
+    background-color: var(--var-corDoFundo);
+    height: 100vh;
+    width: 100vw;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.containerInfo{
+    background-color: var(--var-CorContainer);
+    box-shadow: 1px 1px 8px #0000005d;
+    height: 600px;
+    max-width: 500px;
+    min-width: 490px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    
+}
+
+.formCabecalho{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formCabecalho h1{
+    margin: 20px 0 5px;
+    font-size: 36px;
+}
+.formCabecalho p{
+    font-size: 16px;
+    margin: 5px 0 20px;
+}
+
+.card{
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formbox{
+    display: flex;
+    flex-direction: column;
+}
+
+.formbox input{
+    padding: 15px;
+    margin: 15px;
+    border: 0px;
+    box-shadow: 1px 1px 5px #dadada;
+    background-color: var(--var-Corplaceholder);
+    border-radius: 5px;
+}
+
+.formbox label, .signup{
+    margin-left: 15px;
+}
+
+.registerDiv{
+    margin-left: 15px;
+    margin-bottom: 20px;
+}
+
+.registerDiv a{
+    text-decoration: none;
+}
+
+.btnDiv{
+    margin: auto 0;
+    text-align: center;
+   
+}
+
+.btn{
+    background-color: var(--var-CorBtn);
+    color: #ffff;
+    padding: 10px;
+    width: 140px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn:hover{
+    background-color: var(--var-CorBtnHover);
+}
