@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20515671-f8a0-48a5-b5ed-df73554361b9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/UserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/MatterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/MatterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Repository/MatterRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Repository/MatterRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/MatterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/MatterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/img/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/img/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +43,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "corrige-login",
+    "git-widget-placeholder": "auth",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/53229099826/Documents/GitHub/km",
     "project.structure.last.edited": "Project",
