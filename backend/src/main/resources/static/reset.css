@@ -1,5 +1,46 @@
 *{
+    font-family: Arial, Helvetica, sans-serif;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+:root{
+    --var-corDoFundo: #e6e3e3;
+    --var-CorContainer: #FAFAFA;
+    --var-CorBtn: #E11D2A;
+    --var-CorBtnHover: #8a121a;
+    --var-Corplaceholder:#79797979;
+    --var-corSideBar:#DFDFDF;
+
+
+    /* dark mode */
+    --var-CorDoFundo_Dark:#000;
+    --var-CorContainer_Dark: #FAFAFA;
+    --var-Corplaceholder_Dark:#fff;
+    --var-CorSideBar:#444444;
+
+    /* cor svg */
+    --var-corsvg:#272727;
+}
+
+.btnDiv{
+    margin: auto 0;
+    text-align: center;
+
+}
+
+.btn{
+    background-color: var(--var-CorBtn);
+    color: #ffff;
+    padding: 10px;
+    width: 140px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn:hover{
+    background-color: var(--var-CorBtnHover);
 }

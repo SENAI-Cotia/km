@@ -1,13 +1,139 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/reset.css}">
+    <link rel="stylesheet" th:href="@{/home.css}">
+    <title>Home</title>
 </head>
+
 <body>
- <p>eeee</p>
+<header>
+    <div class="logo">
+        <img th:src="@{/img/logo.png}" alt="notelab-logo" style="height: 35px;">
+    </div>
+    <div class="iconesNav">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor">
+            <path
+                    d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H88V56H216V200Z" />
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+            <path
+                    d="M320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C388.8 576 451.3 548.8 497.3 504.6C504.6 497.6 506.7 486.7 502.6 477.5C498.5 468.3 488.9 462.6 478.8 463.4C473.9 463.8 469 464 464 464C362.4 464 280 381.6 280 280C280 207.9 321.5 145.4 382.1 115.2C391.2 110.7 396.4 100.9 395.2 90.8C394 80.7 386.6 72.5 376.7 70.3C358.4 66.2 339.4 64 320 64z" />
+        </svg>
+    </div>
+</header>
+<main>
+    <aside>
+        <div class="barraDePesquisa">
+            <div class="search">
+                <input id="busca" type="text" placeholder="Matéria">
+            </div>
+            <div class="modalcontainer">
+                <button data-modal="modalMateria" class="openModal btnMateria">
+                    Criar Matéria
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" style="height: 12px; fill: #000000; margin: 0;
+                            ">
+                        <path
+                                d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
+                    </svg>
+                </button>
+
+                <!-- modal matéria -->
+
+                <div id="modalMateria" class="modal">
+
+                    <div class="modalContent">
+                        <div class="modalHeader">
+                            <h2>Criar matéria</h2>
+                            <span class="close">X</span>
+
+                        </div>
+
+                        <div class="containerInput">
+                            <label for="nomeMateria">Nome</label>
+                            <input id="nomeMateria" type="text" placeholder="Digite o nome da matéria">
+                        </div>
+
+                        <div>
+                            <label >Cor</label>
+                            <div class="containerCores" >
+                                <sapn class="cores" style="background-color: #F43545;"> </sapn>
+                                <sapn class="cores" style="background-color: #FA8901;"> </sapn>
+                                <sapn class="cores" style="background-color: #FAD717;"> </sapn>
+                                <sapn class="cores" style="background-color: #00BA71;"> </sapn>
+                                <sapn class="cores" style="background-color: #00C2DE;"> </sapn>
+                                <sapn class="cores" style="background-color: #00418D;"> </sapn>
+                                <sapn class="cores" style="background-color: #5F2879;"> </sapn>
+                            </div>
+                        </div>
+                        <button class="btn btnCriarMateria">Criar matéria</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="profile openModal" data-modal="modalPerfil">
+            <img th:src="@{/img/user.png}" alt="icone-Perfil" style="height: 25px;">
+            <p>nome-sobrenome</p>
+        </div>
+
+        <!-- modal perfil -->
+
+        <div id="modalPerfil" class="modalPerfil modal">
+            <div class="modalSair"><button>sair</button></div>
+        </div>
+
+    </aside>
+
+    <section>
+        <div class="containerCaderno">
+            <h2>Meus cadernos</h2>
+            <div class="btnDiv">
+                <button data-modal="modalCaderno" class="btn criarCaderno openModal" type="submit">Criar
+                    caderno</button>
+            </div>
+        </div>
+        <div class="ContainerCriarNota">
+            <div class="criarNota">
+                <img src="../img/book.png" alt="note-svg" style="height: 70px; margin: 10px;">
+                <p>Comece suas anotações</p>
+                <div class="btnDiv">
+                    <button data-modal="modalCaderno" class="btn criarCaderno openModal" type="submit">Criar
+                        caderno</button>
+                </div>
+            </div>
+        </div>
+
+            <!-- Modal caderno -->
+            <div class="modal" id="modalCaderno">
+                <div class="modalContent">
+                    <div class="modalHeader">
+                        <h2>Criar caderno</h2>
+                        <span class="close">X</span>
+                    </div>
+                    <div class="containerInput">
+                        <label for="nomeCaderno">Nome</label>
+                        <input id="nomeCaderno" type="text" placeholder="Digite o nome da matéria">
+                    </div>
+                    <div class="containerInput">
+                        <label for="materias">matéria</label>
+                        <select id="materias" name="materia">
+                            <option value="">java</option>
+                            <option value="">Javascript</option>
+                        </select>
+                    </div>
+                    <button class="btn criarMateria ">Criar caderno</button>
+                </div>
+            </div>
+
+    </section>
+</main>
+<script th:src="@{/script/script.js}"></script>
 </body>
 </html>
