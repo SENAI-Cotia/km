@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="20515671-f8a0-48a5-b5ed-df73554361b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/MatterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/MatterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Model/Matter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Model/Matter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Repository/MatterRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Repository/MatterRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/MatterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/MatterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/BackendApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/BackendApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,23 +41,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.BackendApplication.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;auth&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/53229099826/Documents/GitHub/km&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.BackendApplication.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "dev",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/53229099826/Documents/GitHub/km",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\53229099826\Documents\GitHub\km\backend\src\main\resources\static" />
