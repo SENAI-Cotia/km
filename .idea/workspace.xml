@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20515671-f8a0-48a5-b5ed-df73554361b9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/CadernoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/MatterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/MatterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Repository/MatterRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Repository/MatterRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/MatterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/MatterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/Controllers/MatterControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/Controllers/MatterControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/Services/MatterServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/Services/MatterServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/CadernoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/CadernoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Model/Caderno.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Model/Caderno.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
