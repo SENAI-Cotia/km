@@ -6,11 +6,11 @@ header{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 20px;
+    padding: 0px 12px;
 }
 
 .iconesNav{
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }
@@ -25,10 +25,26 @@ aside{
     align-items: center;
 }
 
-.fechado{
-    width: 60px;
+.CriarMateria{
+    display: inline-flex;
 }
 
+/* sidebar fechado */
+
+.lupa{
+    display: block;
+    height: 20px;
+    width: fit-content;
+}
+
+.colapsed{
+    width: 60px;
+
+}
+
+.colapsed .search, .colapsed .profile p, .colapsed .CriarMateria .btnMateria, hr {
+    display: none;
+}
 main{
     display: flex;
     flex-direction: row;
@@ -38,7 +54,7 @@ main{
     margin: 15px 0 ;
 }
 
-
+/* ---------------- */
 .search input{
     padding: 12px;
     border: none;
@@ -57,21 +73,32 @@ main{
 
 .modalSair{
     position: absolute;
-
     background-color: aliceblue;
     width: 90px;
     height: 40px;
     border-radius: 10px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
+.modalSair button{
+    background: transparent;
+    border: none;
+}
+.modalSair button:hover{
+    text-decoration: underline;
+
+}
+
+
 main section{
     width: 85%;
+}
+
+.fullOpen{
+    width: 100%;
 }
 section h2{
     margin-left: 20px;
@@ -122,14 +149,19 @@ section h2{
     background-color: #b8b8b849;
 }
 
+.iconesNav{
+    margin-left: 40px;
+}
+.iconesNav button{
+    background-color: transparent;
+    border: none;
+}
 
 svg{
     height: 30px;
-    margin-left: 20px;
     fill: var(--cor-corsvg);
     cursor: pointer;
 }
-
 /* Modal */
 
 .modal {
@@ -179,6 +211,45 @@ svg{
     border: none;
     background-color: var(--var-Corplaceholder);
     border-radius: 5px;
+}
+
+.modalContentCaderno{
+    width: 450px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #ffffff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.modalContentCaderno input, select{
+    margin: 5px;
+    padding: 12px;
+    border: none;
+    background-color: var(--var-Corplaceholder);
+    border-radius: 5px;
+}
+
+.modalContentCaderno .criarCaderno{
+    margin: 0 auto;
+}
+
+.modalPerfil{
+    position: absolute;
+    display: none;
+    overflow: unset;
+    top: 90%;
+    left: 150px;
+    width: 90px;
+    height: 40px;
+}
+
+.modalPerfil svg{
+    margin-right: 10px;
+    cursor: default;
 }
 
 /* The Close Button */
