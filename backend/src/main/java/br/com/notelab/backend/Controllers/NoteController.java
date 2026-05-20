@@ -1,7 +1,7 @@
 package br.com.notelab.backend.Controllers;
 
-import br.com.notelab.backend.Model.Caderno;
-import br.com.notelab.backend.Services.CadernoService;
+import br.com.notelab.backend.Model.Note;
+import br.com.notelab.backend.Services.NoteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,19 +17,19 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/caderno")
-public class CadernoController {
+@RequestMapping("/note")
+public class NoteController {
 
-    private final CadernoService service;
+    private final NoteService noteService;
 
-    public CadernoController(CadernoService service) {
-        this.service = service;
+    public NoteController(NoteService noteService) {
+        this.noteService = noteService;
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createCaderno(@RequestBody Caderno caderno) {
+    public ResponseEntity<?> createNote(@RequestBody Note note) {
         try {
-            Caderno created = service.createCaderno(caderno);
+            Note created = noteService.createNote(note);
             return ResponseEntity.status(201).body(created);
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));
@@ -38,20 +38,29 @@ public class CadernoController {
         }
     }
 
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Caderno>> listByUser(@PathVariable Long userId) {
-        return ResponseEntity.ok(service.listByUser(userId));
+    @GetMapping("/list")
+    public ResponseEntity<List<Note>> listAllNotes() {
+        return ResponseEntity.ok(noteService.listAllNotes());
     }
 
-    @GetMapping("/matter/{matterId}")
-    public ResponseEntity<List<Caderno>> listByMatter(@PathVariable Long matterId) {
-        return ResponseEntity.ok(service.listByMatter(matterId));
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getNoteById(@PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(noteService.getNoteById(id));
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/caderno/{idCaderno}")
+    public ResponseEntity<List<Note>> listByCaderno(@PathVariable Long idCaderno) {
+        return ResponseEntity.ok(noteService.listByCaderno(idCaderno));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCaderno(@PathVariable Long id, @RequestBody Caderno caderno) {
+    public ResponseEntity<?> updateNote(@PathVariable Long id, @RequestBody Note note) {
         try {
-            Caderno updated = service.updateCaderno(id, caderno);
+            Note updated = noteService.updateNote(id, note);
             return ResponseEntity.ok(updated);
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));
@@ -61,9 +70,9 @@ public class CadernoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCaderno(@PathVariable Long id) {
+    public ResponseEntity<?> deleteNote(@PathVariable Long id) {
         try {
-            service.deleteCaderno(id);
+            noteService.deleteNote(id);
             return ResponseEntity.noContent().build();
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));

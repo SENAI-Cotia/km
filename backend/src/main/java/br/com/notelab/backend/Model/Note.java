@@ -1,12 +1,20 @@
 package br.com.notelab.backend.Model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
+import jakarta.persistence.Table;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "notes")
 public class Note {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,18 +25,27 @@ public class Note {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = true)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String noteContent;
 
     @Column(nullable = false)
-    private Date noteEditDate;
+    private LocalDate noteEditDate;
 
-    public Note(Long id, Long idCaderno, String name, String noteContent, Date noteEditDate) {
+    public Note() {
+    }
+
+    public Note(Long id, Long idCaderno, String name, String noteContent, LocalDate noteEditDate) {
         this.id = id;
         this.idCaderno = idCaderno;
         this.name = name;
         this.noteContent = noteContent;
         this.noteEditDate = noteEditDate;
+    }
+
+    @PrePersist
+    @PreUpdate
+    protected void updateEditDate() {
+        this.noteEditDate = LocalDate.now();
     }
 
     public Long getId() {
@@ -63,11 +80,11 @@ public class Note {
         this.noteContent = noteContent;
     }
 
-    public Date getNoteEditDate() {
+    public LocalDate getNoteEditDate() {
         return noteEditDate;
     }
 
-    public void setNoteEditDate(Date noteEditDate) {
+    public void setNoteEditDate(LocalDate noteEditDate) {
         this.noteEditDate = noteEditDate;
     }
 }

@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+body {
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
 :root {
     --var-corDoFundo: #e6e3e3;
     --var-CorContainer: #FAFAFA;
@@ -51,44 +55,61 @@
     display: none;
 }
 
+body.dark-mode,
 .darkMode{
     background-color: var(--var-DarkMode-corFundo);
     color: var(--var-DarkMode-corDaFonte);
 }
 
+body.dark-mode svg,
 .darkMode svg{
     fill: var(--var-DarkMode-corDosIcones);
 }
 
+body.dark-mode header,
+body.dark-mode aside,
 .darkMode aside{
     background-color: var(--var-DarkMode-corSidebar);
     color: var(--var-DarkMode-corDaFonte);
 }
 
 
-.darkMode .modalContentCaderno, .darkMode .modalContent{
+body.dark-mode .modalContentCaderno,
+body.dark-mode .modalContent,
+.darkMode .modalContentCaderno,
+.darkMode .modalContent{
     background-color: var(--var-DarkMode-corContainers);
+    color: var(--var-DarkMode-corDaFonte);
 }
 
+body.dark-mode .modalContent span,
 .darkMode .modalContent span{
     color: var(--var-DarkMode-corDosIcones);
 }
 
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode .modalContentCaderno input,
 .darkMode .modalContentCaderno input{
     background-color: var(--var-Corplaceholder);
+    color: var(--var-DarkMode-corDaFonte);
 }
 
+body.dark-mode .modalContentCaderno span,
 .darkMode .modalContentCaderno span{
     color: var(--var-DarkMode-corDosIcones);
 }
 
+body.dark-mode option,
 .darkMode option{
     background-color: var(--var-Corplaceholder);
     color: var(--var-DarkMode-corDaFonte);
 }
 
+body.dark-mode .modalSair,
 .darkMode .modalSair{
     background-color: var(--var-CorContainer);
+    color: #000000;
 }
 
 .darkHeader{
@@ -97,18 +118,31 @@
 
 }
 
+body.dark-mode .btnMateria,
 .darkMode .btnMateria{
     color: var(--var-DarkMode-corDaFonte);
 }
 
+body.dark-mode .criarNota img,
 .darkMode .criarNota img{
     background-color: var(--var-DarkMode-corFundo);
 }
 
+body.dark-mode .profile svg,
 .darkMode .profile svg{
     fill: var(--var-DarkMode-corDosIcones);
 }
 
-.darkHeader svg, .darkMode .profile svg{
+.darkHeader svg,
+body.dark-mode .profile svg,
+.darkMode .profile svg{
     fill: var(--var-DarkMode-corDosIcones);
+}
+
+body.dark-mode #btnDarkmode {
+    display: none;
+}
+
+body.dark-mode #sunDarkmode {
+    display: inline-block;
 }
