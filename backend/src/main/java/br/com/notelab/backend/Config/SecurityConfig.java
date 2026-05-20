@@ -1,13 +1,10 @@
-<<<<<<< HEAD
 package br.com.notelab.backend.Config;
-=======
 
->>>>>>> 0419367bcd67a3494fb9b0af8e94f6399c53297b
 import br.com.notelab.backend.Services.UserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -30,21 +27,27 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-        AuthenticationManagerBuilder builder =
-                http.getSharedObject(AuthenticationManagerBuilder.class);
-        builder
-                .userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder());
-        return builder.build();
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
+                .userDetailsService(userDetailsService)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/register", "/registrar", "/matter/**", "/caderno/**", "/note/**", "/img/**", "/**.css", "/*.css").permitAll()
+                        .requestMatchers(
+                                "/login",
+                                "/register",
+                                "/registrar",
+                                "/matter/**",
+                                "/caderno/**",
+                                "/img/**",
+                                "/**.css",
+                                "/*.css"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

@@ -7,6 +7,7 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 0px 12px;
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .iconesNav{
@@ -23,6 +24,8 @@ aside{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    transition: width 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+    overflow: hidden;
 }
 
 .CriarMateria{
@@ -37,12 +40,19 @@ aside{
     width: fit-content;
 }
 
+aside.closed,
 .colapsed{
     width: 60px;
 
 }
 
-.colapsed .search, .colapsed .profile p, .colapsed .CriarMateria .btnMateria, hr {
+aside.closed .search,
+aside.closed .profile p,
+aside.closed .CriarMateria .btnMateria,
+.colapsed .search,
+.colapsed .profile p,
+.colapsed .CriarMateria .btnMateria,
+hr {
     display: none;
 }
 main{
@@ -95,10 +105,15 @@ main{
 
 main section{
     width: 85%;
+    transition: width 0.25s ease, background-color 0.25s ease, color 0.25s ease;
 }
 
 .fullOpen{
-    width: 100%;
+    width: 88%;
+}
+
+.fullOpen.expanded{
+    width: calc(100% - 60px);
 }
 section h2{
     margin-left: 20px;
@@ -177,6 +192,10 @@ svg{
   background-color: rgba(0,0,0,0.4);
 }
 
+.modal.is-open {
+    display: block;
+}
+
 .btnCriarMateria{
     margin: 0 auto;
 }
@@ -193,6 +212,7 @@ svg{
     margin: 15% auto;
     padding: 20px;
     border-radius: 10px;
+    color: #0f0f0f;
 }
 
 .modalHeader{
@@ -223,6 +243,7 @@ svg{
     margin: 15% auto;
     padding: 20px;
     border-radius: 10px;
+    color: #0f0f0f;
 }
 
 .modalContentCaderno input, select{
@@ -245,6 +266,7 @@ svg{
     left: 150px;
     width: 90px;
     height: 40px;
+    background: transparent;
 }
 
 .modalPerfil svg{
