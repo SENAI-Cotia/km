@@ -1,36 +1,38 @@
-*{
+* {
     font-family: Arial, Helvetica, sans-serif;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-:root{
+:root {
     --var-corDoFundo: #e6e3e3;
     --var-CorContainer: #FAFAFA;
     --var-CorBtn: #E11D2A;
     --var-CorBtnHover: #8a121a;
-    --var-Corplaceholder:#79797979;
-    --var-corSideBar:#DFDFDF;
-
+    --var-Corplaceholder: #a8a8a8;
+    --var-corSideBar: #DFDFDF;
 
     /* dark mode */
-    --var-CorDoFundo_Dark:#000;
-    --var-CorContainer_Dark: #FAFAFA;
-    --var-Corplaceholder_Dark:#fff;
-    --var-CorSideBar:#444444;
+    --var-DarkMode-corFundo: #191919;
+    --var-DarkMode-corContainers: #797979;
+    --var-DarkMode-corPlaceholder: #353535;
+    --var-DarkMode-corDaFonte: #FFFFFF;
+    --var-DarkMode-corDosIcones: #FFFFFF;
+    --var-DarkMode-corNav: #4E4E4E;
+    --var-DarkMode-corSidebar: #4E4E4E;
 
     /* cor svg */
-    --var-corsvg:#272727;
+    --var-corsvg: #272727;
 }
 
-.btnDiv{
+.btnDiv {
     margin: auto 0;
     text-align: center;
 
 }
 
-.btn{
+.btn {
     background-color: var(--var-CorBtn);
     color: #ffff;
     padding: 10px;
@@ -41,6 +43,72 @@
     font-weight: 500;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: var(--var-CorBtnHover);
+}
+
+.sunDarkmode{
+    display: none;
+}
+
+.darkMode{
+    background-color: var(--var-DarkMode-corFundo);
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+.darkMode svg{
+    fill: var(--var-DarkMode-corDosIcones);
+}
+
+.darkMode aside{
+    background-color: var(--var-DarkMode-corSidebar);
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+
+.darkMode .modalContentCaderno, .darkMode .modalContent{
+    background-color: var(--var-DarkMode-corContainers);
+}
+
+.darkMode .modalContent span{
+    color: var(--var-DarkMode-corDosIcones);
+}
+
+.darkMode .modalContentCaderno input{
+    background-color: var(--var-Corplaceholder);
+}
+
+.darkMode .modalContentCaderno span{
+    color: var(--var-DarkMode-corDosIcones);
+}
+
+.darkMode option{
+    background-color: var(--var-Corplaceholder);
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+.darkMode .modalSair{
+    background-color: var(--var-CorContainer);
+}
+
+.darkHeader{
+    background-color: var(--var-DarkMode-corSidebar);
+    color: var(--var-DarkMode-corDaFonte);
+
+}
+
+.darkMode .btnMateria{
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+.darkMode .criarNota img{
+    background-color: var(--var-DarkMode-corFundo);
+}
+
+.darkMode .profile svg{
+    fill: var(--var-DarkMode-corDosIcones);
+}
+
+.darkHeader svg, .darkMode .profile svg{
+    fill: var(--var-DarkMode-corDosIcones);
 }

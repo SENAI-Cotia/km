@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package br.com.notelab.backend.Config;
+=======
+
+>>>>>>> 0419367bcd67a3494fb9b0af8e94f6399c53297b
 import br.com.notelab.backend.Services.UserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
