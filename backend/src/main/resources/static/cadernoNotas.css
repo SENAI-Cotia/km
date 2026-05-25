@@ -1,0 +1,75 @@
+.asideNotas{
+    background-color: var(--var-corSideBar);
+    box-shadow: inset 10px 0 10px -10px rgba(117, 117, 117, 0.466);
+
+}
+
+.containerHeader{
+    margin: 20px 0;
+}
+
+.btnNotas{
+    padding: 6px 10px;
+    text-align: center;
+}
+
+.nomeNota{
+    background-color: aliceblue;
+    padding: 5px;
+    margin: 10px 0;
+    border-radius: 5px;
+    width: 180px;
+}
+.nomeNota h4, .titulo h5, .titulo h4{
+    font-weight: normal;
+    margin-bottom: 3px;
+}
+
+.nomeNota p{
+    font-size: 13px;
+}
+
+.containerAberto{
+    width: 76%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--var-corDoFundo);
+
+}
+
+.fechado{
+    display: none;
+}
+
+.nota{
+    width: 950px;
+    height: 450px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px #a0a0a05e;
+    padding: 5px;
+}
+
+.estilizacao{
+    display: flex;
+
+}
+
+.estilizacao img{
+    height: 26px;
+    margin: 5px 10px;
+    padding: 3px;
+    background-color: #d3d3d3;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+textarea{
+    border: 1px 1px #575757;
+    background-color: #eff0f1c5;
+    width: 940px;
+    height: 395px;
+    resize: none;
+    border-radius: 3px;
+}
+

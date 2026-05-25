@@ -55,7 +55,7 @@ aside.closed .profile p,
 aside.closed .CriarMateria .btnMateria,
 .colapsed .search,
 .colapsed .profile p,
-.colapsed .CriarMateria .btnMateria, aside .closed hr {
+.colapsed .CriarMateria .btnMateria {
     display: none;
 }
 main{
