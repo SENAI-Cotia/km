@@ -308,3 +308,922 @@ svg{
     margin: 10px 5px;
     cursor: pointer;
 }
+
+/* Responsividade */
+html,
+body{
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+header,
+main{
+    width: 100%;
+    min-width: 0;
+}
+
+main section,
+.fullOpen,
+.fullOpen.expanded{
+    min-width: 0;
+}
+
+.barraDePesquisa,
+.search,
+.CriarMateria,
+.profile,
+.containerCaderno,
+.ContainerCriarNota,
+.criarNota,
+.containerInput,
+.containerCores{
+    max-width: 100%;
+}
+
+.search input,
+.modalContent input,
+.modalContentCaderno input,
+.modalContentCaderno select{
+    max-width: 100%;
+    min-width: 0;
+}
+
+.modal:not(.modalPerfil){
+    padding: 16px;
+}
+
+.modalContent,
+.modalContentCaderno{
+    max-width: calc(100% - 32px);
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+}
+
+@media (max-width: 1024px){
+    header{
+        height: auto;
+        min-height: 48px;
+        padding: 8px 12px;
+    }
+
+    .iconesNav{
+        width: 100%;
+        min-width: 0;
+    }
+
+    aside{
+        width: 170px;
+        min-width: 170px;
+        flex: 0 0 170px;
+    }
+
+    aside.closed,
+    .colapsed{
+        width: 60px;
+        min-width: 60px;
+        flex-basis: 60px;
+    }
+
+    main section,
+    .fullOpen{
+        width: calc(100% - 170px);
+        flex: 1 1 auto;
+    }
+
+    .fullOpen.expanded{
+        width: calc(100% - 60px);
+    }
+
+    .barraDePesquisa{
+        width: calc(100% - 20px);
+    }
+
+    .search input{
+        width: 100%;
+    }
+
+    .btnMateria{
+        width: 100%;
+        gap: 6px;
+    }
+
+    .containerCaderno{
+        gap: 12px;
+    }
+}
+
+@media (max-width: 768px){
+    main{
+        flex-direction: column;
+    }
+
+    aside,
+    aside.closed,
+    .colapsed{
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        min-height: 0;
+        flex: 0 0 auto;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        overflow: visible;
+    }
+
+    aside.closed .search,
+    aside.closed .profile p,
+    aside.closed .CriarMateria .btnMateria,
+    .colapsed .search,
+    .colapsed .profile p,
+    .colapsed .CriarMateria .btnMateria{
+        display: flex;
+    }
+
+    .barraDePesquisa{
+        width: auto;
+        flex: 1 1 auto;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .search{
+        flex: 1 1 180px;
+        margin: 0;
+    }
+
+    .CriarMateria{
+        flex: 0 0 auto;
+        align-items: center;
+    }
+
+    .btnMateria{
+        width: 140px;
+        min-height: 38px;
+    }
+
+    .profile{
+        flex: 0 0 auto;
+        gap: 8px;
+    }
+
+    .profile p{
+        max-width: 140px;
+        overflow-wrap: anywhere;
+    }
+
+    main section,
+    .fullOpen,
+    .fullOpen.expanded{
+        width: 100%;
+        flex: 1 1 auto;
+    }
+
+    .containerCaderno{
+        padding: 0 16px;
+    }
+
+    section h2{
+        margin-left: 0;
+    }
+
+    .ContainerCriarNota{
+        width: 100%;
+        height: auto;
+        min-height: 50vh;
+        padding: 32px 16px;
+    }
+
+    .modalContent,
+    .modalContentCaderno{
+        height: auto;
+        min-height: 350px;
+        margin: 48px auto;
+    }
+
+    .modalPerfil{
+        position: fixed;
+        top: auto;
+        left: auto;
+        right: 16px;
+        bottom: 16px;
+    }
+}
+
+@media (max-width: 425px){
+    header{
+        padding: 8px 10px;
+    }
+
+    .logo img,
+    .imagemLogo{
+        max-width: 150px;
+        height: auto;
+    }
+
+    .iconesNav{
+        justify-content: flex-end;
+        gap: 12px;
+        margin-left: 12px;
+    }
+
+    svg{
+        height: 26px;
+    }
+
+    aside,
+    aside.closed,
+    .colapsed{
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px;
+    }
+
+    .barraDePesquisa{
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .CriarMateria{
+        width: 100%;
+    }
+
+    .btnMateria{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .profile{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .profile p{
+        max-width: calc(100% - 40px);
+    }
+
+    .containerCaderno{
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px 12px 0;
+    }
+
+    .containerCaderno .btnDiv,
+    .containerCaderno .btn{
+        width: 100%;
+    }
+
+    .criarCaderno{
+        margin: 0;
+    }
+
+    .ContainerCriarNota{
+        padding: 28px 12px;
+        text-align: center;
+    }
+
+    .criarNota{
+        width: 100%;
+    }
+
+    .modal:not(.modalPerfil){
+        padding: 12px;
+    }
+
+    .modalContent,
+    .modalContentCaderno{
+        width: 100%;
+        max-width: 100%;
+        min-height: 0;
+        margin: 32px auto;
+        padding: 16px;
+        flex-wrap: nowrap;
+    }
+
+    .modalHeader{
+        gap: 12px;
+        align-items: center;
+    }
+
+    .containerCores{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .modal .cores{
+        margin: 0;
+    }
+}
+
+@media (max-width: 375px){
+    .modalContent,
+    .modalContentCaderno{
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+
+    .ContainerCriarNota{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media (max-width: 320px){
+    header,
+    aside,
+    aside.closed,
+    .colapsed{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .containerCaderno{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .containerCaderno .btn{
+        max-width: none;
+    }
+}
+
+/* Refinos de alinhamento da home */
+.ContainerCriarNota{
+    margin: 0 auto;
+}
+
+.criarNota{
+    justify-content: center;
+    text-align: center;
+}
+
+.criarNota img{
+    display: block;
+    max-width: 100%;
+}
+
+.CriarMateria{
+    align-items: center;
+}
+
+.btnMateria{
+    align-items: center;
+}
+
+.profile p{
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px){
+    header{
+        gap: 12px;
+    }
+
+    .logo{
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .iconesNav{
+        align-items: center;
+        justify-content: flex-end;
+        gap: 14px;
+        margin-left: 0;
+    }
+
+    .iconesNav button{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 36px;
+        min-height: 36px;
+    }
+
+    .ContainerCriarNota{
+        min-height: calc(100vh - 56px - 74px - 70px);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .criarNota{
+        margin: 0 auto;
+        gap: 8px;
+    }
+
+    .criarNota img{
+        margin: 0 auto 4px !important;
+    }
+
+    .criarNota .btnDiv{
+        width: 100%;
+        margin: 0;
+    }
+
+    .CriarMateria{
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .CriarMateria > svg{
+        flex: 0 0 20px;
+        width: 20px;
+        height: 20px !important;
+    }
+
+    .btnMateria{
+        margin: 0;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .profile{
+        min-width: 0;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .profile svg{
+        flex: 0 0 30px;
+    }
+}
+
+@media (max-width: 425px){
+    .iconesNav{
+        gap: 8px;
+    }
+
+    .iconesNav button{
+        min-width: 32px;
+        min-height: 32px;
+    }
+
+    aside,
+    aside.closed,
+    .colapsed{
+        gap: 14px;
+    }
+
+    .barraDePesquisa{
+        gap: 12px;
+    }
+
+    .CriarMateria{
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .btnMateria{
+        flex: 0 1 auto;
+        width: auto;
+        min-width: 0;
+        padding: 8px 10px;
+    }
+
+    .profile{
+        padding-top: 2px;
+    }
+
+    .ContainerCriarNota{
+        min-height: 46vh;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* Correções mobile finais */
+@media (max-width: 768px){
+    main{
+        flex-direction: row;
+        align-items: stretch;
+        min-height: calc(100vh - 56px);
+    }
+
+    aside,
+    aside.closed,
+    .colapsed{
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+        height: auto;
+        min-height: calc(100vh - 56px);
+        overflow: hidden;
+    }
+
+    aside{
+        width: clamp(220px, 34vw, 260px);
+        min-width: 220px;
+        flex: 0 0 clamp(220px, 34vw, 260px);
+        padding: 14px 12px;
+        gap: 16px;
+    }
+
+    aside.closed,
+    .colapsed{
+        width: 60px;
+        min-width: 60px;
+        flex-basis: 60px;
+        padding: 14px 8px;
+    }
+
+    aside.closed .search,
+    aside.closed .profile p,
+    aside.closed .CriarMateria .btnMateria,
+    .colapsed .search,
+    .colapsed .profile p,
+    .colapsed .CriarMateria .btnMateria{
+        display: none;
+    }
+
+    .barraDePesquisa{
+        width: 100%;
+        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .search{
+        width: 160px;
+        max-width: 100%;
+        flex: 0 0 auto;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .search input{
+        width: 100%;
+        min-width: 0;
+        padding: 10px;
+    }
+
+    .CriarMateria{
+        width: auto;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        overflow: hidden;
+    }
+
+    .CriarMateria > svg{
+        width: 18px;
+        height: 18px !important;
+        flex: 0 0 18px;
+    }
+
+    .btnMateria{
+        width: auto;
+        min-width: 0;
+        min-height: 34px;
+        padding: 6px 8px;
+        margin: 0;
+        justify-content: center;
+        gap: 4px;
+        white-space: nowrap;
+    }
+
+    .profile{
+        width: 100%;
+        min-width: 0;
+        justify-content: center;
+        gap: 8px;
+        padding: 0;
+    }
+
+    .profile svg{
+        width: 28px;
+        height: 28px;
+        flex: 0 0 28px;
+    }
+
+    .profile p{
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    main section,
+    .fullOpen,
+    .fullOpen.expanded{
+        width: auto;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .ContainerCriarNota{
+        width: 100%;
+        min-height: calc(100vh - 56px - 72px);
+        padding: 24px 12px;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .criarNota{
+        width: 100%;
+        max-width: 220px;
+        margin: 0 auto;
+    }
+
+    .criarNota img{
+        width: 70px;
+        height: 70px !important;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 425px){
+    header{
+        min-height: 52px;
+        gap: 8px;
+    }
+
+    .imagemLogo{
+        max-width: 130px;
+    }
+
+    .iconesNav{
+        gap: 6px;
+    }
+
+    .iconesNav button{
+        min-width: 30px;
+        min-height: 30px;
+    }
+
+    main{
+        min-height: calc(100vh - 52px);
+    }
+
+    aside{
+        width: 220px;
+        min-width: 220px;
+        flex-basis: 220px;
+        min-height: calc(100vh - 52px);
+        padding: 12px 10px;
+    }
+
+    aside.closed,
+    .colapsed{
+        width: 56px;
+        min-width: 56px;
+        flex-basis: 56px;
+        padding: 12px 6px;
+    }
+
+    .search{
+        width: 145px;
+    }
+
+    .btnMateria{
+        font-size: 13px;
+        padding: 6px;
+    }
+
+    .profile p{
+        max-width: 132px;
+    }
+
+    .ContainerCriarNota{
+        min-height: calc(100vh - 52px - 90px);
+        padding: 20px 10px;
+    }
+}
+
+@media (max-width: 375px){
+    aside{
+        width: 205px;
+        min-width: 205px;
+        flex-basis: 205px;
+    }
+
+    .search{
+        width: 136px;
+    }
+
+    .profile p{
+        max-width: 118px;
+    }
+}
+
+@media (max-width: 320px){
+    aside{
+        width: 190px;
+        min-width: 190px;
+        flex-basis: 190px;
+    }
+
+    aside.closed,
+    .colapsed{
+        width: 52px;
+        min-width: 52px;
+        flex-basis: 52px;
+    }
+
+    .search{
+        width: 124px;
+    }
+
+    .CriarMateria{
+        gap: 4px;
+    }
+
+    .btnMateria{
+        font-size: 12px;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .profile p{
+        max-width: 102px;
+    }
+}
+
+/* Refinamento visual da sidebar */
+aside{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.barraDePesquisa{
+    width: calc(100% - 18px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.search{
+    width: 100%;
+}
+
+.search input{
+    width: 100%;
+    outline: none;
+    transition: box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.search input:focus{
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.CriarMateria{
+    width: 100%;
+    justify-content: center;
+    padding: 4px 0;
+    transition: background-color 0.25s ease;
+}
+
+.CriarMateria:hover,
+.profile:hover{
+    background-color: #b8b8b849;
+}
+
+.btnMateria{
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.profile{
+    width: calc(100% - 18px);
+    min-height: 42px;
+    justify-content: center;
+    gap: 8px;
+    padding: 6px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+.profile p{
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.modalSair{
+    width: 104px;
+    min-height: 42px;
+    transition: box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.modalSair form{
+    width: 100%;
+}
+
+.modalSair button{
+    width: 100%;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.modalSair:hover{
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.modalSair svg{
+    width: 16px;
+    height: 14px;
+    margin-right: 0;
+}
+
+.iconesNav button{
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+.iconesNav button:hover{
+    background-color: #b8b8b849;
+}
+
+aside.closed .barraDePesquisa,
+.colapsed .barraDePesquisa{
+    width: 100%;
+}
+
+aside.closed .CriarMateria,
+.colapsed .CriarMateria{
+    width: 100%;
+}
+
+aside.closed .profile,
+.colapsed .profile{
+    width: 100%;
+}
+
+@media (max-width: 768px){
+    aside{
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .barraDePesquisa{
+        width: 100%;
+        gap: 12px;
+    }
+
+    .search{
+        width: 160px;
+    }
+
+    .CriarMateria{
+        width: auto;
+        padding: 4px;
+    }
+
+    .profile{
+        width: 100%;
+        min-height: 40px;
+    }
+
+    .modalPerfil{
+        right: auto;
+        bottom: 18px;
+        left: 70px;
+    }
+}
+
+@media (max-width: 425px){
+    .search{
+        width: 145px;
+    }
+
+    .profile{
+        padding: 5px;
+    }
+
+    .modalPerfil{
+        left: 62px;
+        bottom: 14px;
+    }
+}
+
+@media (max-width: 375px){
+    .search{
+        width: 136px;
+    }
+}
+
+@media (max-width: 320px){
+    .search{
+        width: 124px;
+    }
+
+    .profile{
+        gap: 6px;
+    }
+}

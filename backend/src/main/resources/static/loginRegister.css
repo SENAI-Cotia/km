@@ -104,3 +104,92 @@ body{
 .btn:hover{
     background-color: var(--var-CorBtnHover);
 }
+
+/* Responsividade */
+@media (max-width: 520px){
+    body{
+        width: 100%;
+        min-height: 100vh;
+        height: auto;
+        padding: 24px 12px;
+        overflow-x: hidden;
+    }
+
+    .containerLogo{
+        margin-bottom: 16px;
+    }
+
+    .containerLogo img{
+        max-width: 190px;
+        height: auto;
+    }
+
+    .containerInfo{
+        width: 100%;
+        max-width: 500px;
+        min-width: 0;
+        height: auto;
+        min-height: 0;
+    }
+
+    .card{
+        width: 100%;
+        height: auto;
+        min-height: 360px;
+    }
+
+    .formDiv,
+    .formbox{
+        width: 100%;
+        min-width: 0;
+    }
+
+    .formCabecalho h1{
+        font-size: 28px;
+    }
+
+    .formCabecalho p{
+        text-align: center;
+        padding: 0 12px;
+    }
+
+    .formbox input{
+        width: calc(100% - 30px);
+        min-width: 0;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 375px){
+    body{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .containerLogo img{
+        max-width: 170px;
+    }
+
+    .formbox input{
+        margin-left: 12px;
+        margin-right: 12px;
+        width: calc(100% - 24px);
+    }
+
+    .formbox label,
+    .signup,
+    .registerDiv{
+        margin-left: 12px;
+    }
+}
+
+@media (max-width: 320px){
+    .formCabecalho h1{
+        font-size: 26px;
+    }
+
+    .btn{
+        width: calc(100% - 24px);
+        max-width: 140px;
+    }
+}
