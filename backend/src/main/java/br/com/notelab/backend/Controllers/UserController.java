@@ -3,7 +3,9 @@
 package br.com.notelab.backend.Controllers;
 
 import br.com.notelab.backend.Model.User;
+import br.com.notelab.backend.Repository.UserRepository;
 import br.com.notelab.backend.Services.UserService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +17,11 @@ import java.util.List;
 public class UserController {
 
     private final UserService service;
+    private final UserRepository userRepository;
 
-    public UserController(UserService service) {
+    public UserController(UserService service, UserRepository userRepository) {
         this.service = service;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/register")
@@ -47,7 +51,14 @@ public class UserController {
     }
 
     @GetMapping("/home")
-    public String home(Model model) {
+    public String home(Model model, Authentication authentication) {
+        if (authentication != null && authentication.isAuthenticated()) {
+            String email = authentication.getName();
+            userRepository.findByEmail(email)
+                    .map(User::getName)
+                    .ifPresent(username -> model.addAttribute("username", username));
+        }
+
         return "home";
     }
 
