@@ -20,6 +20,7 @@ aside{
     height: 95vh;
     width: 12%;
     background-color: var(--var-corSideBar);
+    padding: 0 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -29,7 +30,10 @@ aside{
 }
 
 .CriarMateria{
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    padding: 3px;
 }
 
 /* sidebar fechado */
@@ -51,8 +55,7 @@ aside.closed .profile p,
 aside.closed .CriarMateria .btnMateria,
 .colapsed .search,
 .colapsed .profile p,
-.colapsed .CriarMateria .btnMateria,
-hr {
+.colapsed .CriarMateria .btnMateria, aside .closed hr {
     display: none;
 }
 main{
@@ -65,12 +68,26 @@ main{
 }
 
 /* ---------------- */
+
+.barraDePesquisa{
+    width: 100%;
+}
+
+.search{
+    width: 100%;
+    margin: 15px 0;
+}
+
 .search input{
+    width: 100%;
     padding: 12px;
     border: none;
     border-radius: 5px;
     background-color: var(--var-Corplaceholder);
+    box-sizing: border-box;
 }
+
+/* ------- */
 
 .profile{
     position: relative;
@@ -102,19 +119,15 @@ main{
 
 }
 
-
 main section{
     width: 85%;
     transition: width 0.25s ease, background-color 0.25s ease, color 0.25s ease;
 }
 
 .fullOpen{
-    width: 88%;
+    width: 100%;
 }
 
-.fullOpen.expanded{
-    width: calc(100% - 60px);
-}
 section h2{
     margin-left: 20px;
 }
@@ -160,7 +173,7 @@ section h2{
     justify-content: space-around;
 }
 
-.btnMateria:hover{
+.CriarMateria:hover{
     background-color: #b8b8b849;
 }
 
@@ -274,7 +287,6 @@ svg{
     cursor: default;
 }
 
-/* The Close Button */
 .close {
   color: #0f0f0f;
   font-size: 28px;
