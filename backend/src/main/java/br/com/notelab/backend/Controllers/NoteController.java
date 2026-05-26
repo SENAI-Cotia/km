@@ -1,8 +1,10 @@
 package br.com.notelab.backend.Controllers;
 
 import br.com.notelab.backend.Model.Note;
+import br.com.notelab.backend.Services.AuthenticatedUserService;
 import br.com.notelab.backend.Services.NoteService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,15 +23,19 @@ import java.util.NoSuchElementException;
 public class NoteController {
 
     private final NoteService noteService;
+    private final AuthenticatedUserService authenticatedUserService;
 
-    public NoteController(NoteService noteService) {
+    public NoteController(NoteService noteService, AuthenticatedUserService authenticatedUserService) {
         this.noteService = noteService;
+        this.authenticatedUserService = authenticatedUserService;
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createNote(@RequestBody Note note) {
+    public ResponseEntity<?> createNote(@RequestBody Note note, Authentication authentication) {
         try {
-            Note created = noteService.createNote(note);
+            Note created = authenticatedUserService == null || authentication == null
+                    ? noteService.createNote(note)
+                    : noteService.createNoteForUser(note, authenticatedUserService.getAuthenticatedUserId(authentication));
             return ResponseEntity.status(201).body(created);
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));
@@ -44,23 +50,37 @@ public class NoteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getNoteById(@PathVariable Long id) {
+    public ResponseEntity<?> getNoteById(@PathVariable Long id, Authentication authentication) {
         try {
-            return ResponseEntity.ok(noteService.getNoteById(id));
+            Note note = authenticatedUserService == null || authentication == null
+                    ? noteService.getNoteById(id)
+                    : noteService.getNoteByIdForUser(id, authenticatedUserService.getAuthenticatedUserId(authentication));
+            return ResponseEntity.ok(note);
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));
         }
     }
 
     @GetMapping("/caderno/{idCaderno}")
-    public ResponseEntity<List<Note>> listByCaderno(@PathVariable Long idCaderno) {
-        return ResponseEntity.ok(noteService.listByCaderno(idCaderno));
+    public ResponseEntity<?> listByCaderno(@PathVariable Long idCaderno, Authentication authentication) {
+        try {
+            List<Note> notes = authenticatedUserService == null || authentication == null
+                    ? noteService.listByCaderno(idCaderno)
+                    : noteService.listByCadernoForUser(idCaderno, authenticatedUserService.getAuthenticatedUserId(authentication));
+            return ResponseEntity.ok(notes);
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateNote(@PathVariable Long id, @RequestBody Note note) {
+    public ResponseEntity<?> updateNote(@PathVariable Long id, @RequestBody Note note, Authentication authentication) {
         try {
-            Note updated = noteService.updateNote(id, note);
+            Note updated = authenticatedUserService == null || authentication == null
+                    ? noteService.updateNote(id, note)
+                    : noteService.updateNoteForUser(id, note, authenticatedUserService.getAuthenticatedUserId(authentication));
             return ResponseEntity.ok(updated);
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));
@@ -70,12 +90,18 @@ public class NoteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteNote(@PathVariable Long id) {
+    public ResponseEntity<?> deleteNote(@PathVariable Long id, Authentication authentication) {
         try {
-            noteService.deleteNote(id);
+            if (authenticatedUserService == null || authentication == null) {
+                noteService.deleteNote(id);
+            } else {
+                noteService.deleteNoteForUser(id, authenticatedUserService.getAuthenticatedUserId(authentication));
+            }
             return ResponseEntity.noContent().build();
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }
     }
 }

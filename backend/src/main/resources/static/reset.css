@@ -19,12 +19,12 @@ body {
 
     /* dark mode */
     --var-DarkMode-corFundo: #191919;
-    --var-DarkMode-corContainers: #797979;
-    --var-DarkMode-corPlaceholder: #353535;
-    --var-DarkMode-corDaFonte: #FFFFFF;
+    --var-DarkMode-corContainers: #2f2f2f;
+    --var-DarkMode-corPlaceholder: #3a3a3a;
+    --var-DarkMode-corDaFonte: #F3F3F3;
     --var-DarkMode-corDosIcones: #FFFFFF;
-    --var-DarkMode-corNav: #4E4E4E;
-    --var-DarkMode-corSidebar: #4E4E4E;
+    --var-DarkMode-corNav: #343434;
+    --var-DarkMode-corSidebar: #333333;
 
     /* cor svg */
     --var-corsvg: #272727;
@@ -61,6 +61,10 @@ body.dark-mode,
     color: var(--var-DarkMode-corDaFonte);
 }
 
+[hidden] {
+    display: none !important;
+}
+
 body.dark-mode svg,
 .darkMode svg{
     fill: var(--var-DarkMode-corDosIcones);
@@ -70,6 +74,13 @@ body.dark-mode header,
 body.dark-mode aside,
 .darkMode aside{
     background-color: var(--var-DarkMode-corSidebar);
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+body.dark-mode main,
+body.dark-mode .fullOpen,
+body.dark-mode .containerAberto{
+    background-color: var(--var-DarkMode-corFundo);
     color: var(--var-DarkMode-corDaFonte);
 }
 
@@ -89,10 +100,58 @@ body.dark-mode .modalContent span,
 
 body.dark-mode input,
 body.dark-mode select,
+body.dark-mode textarea,
+body.dark-mode .noteEditor,
 body.dark-mode .modalContentCaderno input,
 .darkMode .modalContentCaderno input{
-    background-color: var(--var-Corplaceholder);
+    background-color: var(--var-DarkMode-corPlaceholder);
     color: var(--var-DarkMode-corDaFonte);
+}
+
+body.dark-mode .cardMateria,
+body.dark-mode .cardCaderno,
+body.dark-mode .matterPageTitle,
+body.dark-mode .nomeNota,
+body.dark-mode .nota{
+    background-color: var(--var-DarkMode-corContainers);
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+body.dark-mode .cardMateria:hover,
+body.dark-mode .cardCaderno:hover,
+body.dark-mode .nomeNota:hover,
+body.dark-mode .nomeNota.is-active{
+    background-color: #3b3b3b;
+}
+
+body.dark-mode .editorToolbar{
+    border-color: #4a4a4a;
+}
+
+body.dark-mode .editorToolbar button{
+    background-color: #454545;
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+body.dark-mode .editorToolbar button:hover{
+    background-color: #555555;
+}
+
+body.dark-mode .deleteIconButton,
+body.dark-mode .deleteNoteButton{
+    color: #dddddd;
+}
+
+body.dark-mode .deleteIconButton:hover,
+body.dark-mode .deleteNoteButton:hover{
+    background-color: #e11d2a30;
+    color: #ff6f78;
+}
+
+body.dark-mode .noteEditDate,
+body.dark-mode .autosaveStatus,
+body.dark-mode .emptyNotesState{
+    color: #c8c8c8;
 }
 
 body.dark-mode .modalContentCaderno span,

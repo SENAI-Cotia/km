@@ -1,7 +1,9 @@
 package br.com.notelab.backend.Services;
 
 import br.com.notelab.backend.Model.Matter;
+import br.com.notelab.backend.Repository.CadernoRepository;
 import br.com.notelab.backend.Repository.MatterRepository;
+import br.com.notelab.backend.Repository.NoteRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -27,6 +29,12 @@ class MatterServiceTest {
 
     @Mock
     private MatterRepository repository;
+
+    @Mock
+    private CadernoRepository cadernoRepository;
+
+    @Mock
+    private NoteRepository noteRepository;
 
     @InjectMocks
     private MatterService service;
@@ -105,22 +113,23 @@ class MatterServiceTest {
 
     @Test
     void deleteMatterDeletesWhenMatterExists() {
-        when(repository.existsById(1L)).thenReturn(true);
-        doNothing().when(repository).deleteById(1L);
+        Matter matter = new Matter(1L, 10L, "Matematica");
+        when(repository.findById(1L)).thenReturn(Optional.of(matter));
+        when(cadernoRepository.findByMatterIdAndUserId(1L, 10L)).thenReturn(List.of());
 
         service.deleteMatter(1L);
 
-        verify(repository).deleteById(1L);
+        verify(repository).delete(matter);
     }
 
     @Test
     void deleteMatterThrowsWhenMatterDoesNotExist() {
-        when(repository.existsById(99L)).thenReturn(false);
+        when(repository.findById(99L)).thenReturn(Optional.empty());
 
         NoSuchElementException exception = assertThrows(NoSuchElementException.class,
                 () -> service.deleteMatter(99L));
 
         assertEquals("Materia nao encontrada", exception.getMessage());
-        verify(repository, never()).deleteById(99L);
+        verify(repository, never()).delete(any());
     }
 }

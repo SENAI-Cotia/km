@@ -3,7 +3,9 @@ package br.com.notelab.backend.Services;
 import br.com.notelab.backend.Model.Caderno;
 import br.com.notelab.backend.Repository.CadernoRepository;
 import br.com.notelab.backend.Repository.MatterRepository;
+import br.com.notelab.backend.Repository.NoteRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -13,10 +15,16 @@ public class CadernoService {
 
     private final CadernoRepository cadernoRepository;
     private final MatterRepository matterRepository;
+    private final NoteRepository noteRepository;
 
-    public CadernoService(CadernoRepository cadernoRepository, MatterRepository matterRepository) {
+    public CadernoService(
+            CadernoRepository cadernoRepository,
+            MatterRepository matterRepository,
+            NoteRepository noteRepository
+    ) {
         this.cadernoRepository = cadernoRepository;
         this.matterRepository = matterRepository;
+        this.noteRepository = noteRepository;
     }
 
     public Caderno createCaderno(Caderno caderno) {
@@ -25,6 +33,25 @@ public class CadernoService {
         if (!matterRepository.existsById(caderno.getMatterId())) {
             throw new NoSuchElementException("Materia nao encontrada");
         }
+
+        caderno.setId(null);
+        caderno.setName(caderno.getName().trim());
+        caderno.setDescription(caderno.getDescription().trim());
+        return cadernoRepository.save(caderno);
+    }
+
+    public Caderno createCadernoForUser(Caderno caderno, Long userId) {
+        if (caderno == null) {
+            throw new RuntimeException("Caderno nao informado");
+        }
+        if (userId == null) {
+            throw new RuntimeException("userId e obrigatorio");
+        }
+        caderno.setUserId(userId);
+        validateCreate(caderno);
+
+        matterRepository.findByIdAndUserId(caderno.getMatterId(), userId)
+                .orElseThrow(() -> new NoSuchElementException("Materia nao encontrada"));
 
         caderno.setId(null);
         caderno.setName(caderno.getName().trim());
@@ -46,15 +73,26 @@ public class CadernoService {
         return cadernoRepository.save(existingCaderno);
     }
 
+    @Transactional
     public void deleteCaderno(Long id) {
         if (id == null) {
             throw new RuntimeException("id e obrigatorio");
         }
-        if (!cadernoRepository.existsById(id)) {
-            throw new NoSuchElementException("Caderno nao encontrado");
-        }
+        Caderno caderno = cadernoRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Caderno nao encontrado"));
 
-        cadernoRepository.deleteById(id);
+        deleteCadernoCascade(caderno);
+    }
+
+    @Transactional
+    public void deleteCadernoForUser(Long id, Long userId) {
+        Caderno caderno = getCadernoByIdAndUserId(id, userId);
+        deleteCadernoCascade(caderno);
+    }
+
+    private void deleteCadernoCascade(Caderno caderno) {
+        noteRepository.deleteByIdCaderno(caderno.getId());
+        cadernoRepository.delete(caderno);
     }
 
     public List<Caderno> listByUser(Long userId) {
@@ -71,6 +109,29 @@ public class CadernoService {
         }
 
         return cadernoRepository.findByMatterId(matterId);
+    }
+
+    public List<Caderno> listByMatterAndUser(Long matterId, Long userId) {
+        if (matterId == null) {
+            throw new RuntimeException("matterId e obrigatorio");
+        }
+        if (userId == null) {
+            throw new RuntimeException("userId e obrigatorio");
+        }
+
+        return cadernoRepository.findByMatterIdAndUserId(matterId, userId);
+    }
+
+    public Caderno getCadernoByIdAndUserId(Long id, Long userId) {
+        if (id == null) {
+            throw new RuntimeException("id e obrigatorio");
+        }
+        if (userId == null) {
+            throw new RuntimeException("userId e obrigatorio");
+        }
+
+        return cadernoRepository.findByIdAndUserId(id, userId)
+                .orElseThrow(() -> new NoSuchElementException("Caderno nao encontrado"));
     }
 
     private void validateCreate(Caderno caderno) {

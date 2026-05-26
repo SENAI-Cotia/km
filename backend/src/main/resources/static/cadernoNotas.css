@@ -1,26 +1,122 @@
+.notesPage{
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.notesPage main{
+    height: calc(100vh - 5vh);
+    min-height: 0;
+    max-height: none;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+}
+
+.notesPage #aside{
+    flex: 0 0 12%;
+}
+
+.notesPage #aside.closed{
+    flex-basis: 60px;
+}
+
 .asideNotas{
     background-color: var(--var-corSideBar);
     box-shadow: inset 10px 0 10px -10px rgba(117, 117, 117, 0.466);
-
+    width: clamp(220px, 20vw, 280px);
+    min-width: 220px;
+    flex: 0 0 clamp(220px, 20vw, 280px);
+    height: auto;
+    min-height: 0;
+    justify-content: flex-start;
+    align-items: stretch;
+    overflow: hidden;
 }
 
 .containerHeader{
-    margin: 20px 0;
+    width: 100%;
+    min-height: 0;
+    height: 100%;
+    margin: 0;
+    padding: 20px 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo{
+    min-width: 0;
+}
+
+.titulo h4,
+.titulo h5{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.btnDiv{
+    width: 100%;
 }
 
 .btnNotas{
-    padding: 6px 10px;
+    width: 100%;
+    min-height: 40px;
+    padding: 8px 10px;
     text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.deleteCadernoTextButton{
+    width: 100%;
+    min-height: 36px;
+    margin-top: 8px;
+    border: none;
+    background: transparent;
+    color: var(--var-CorBtn);
+    cursor: pointer;
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+.listaNotas{
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 2px;
 }
 
 .nomeNota{
     background-color: aliceblue;
-    padding: 5px;
+    padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
-    width: 180px;
+    width: 100%;
+    min-height: 48px;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
-.nomeNota h4, .titulo h5, .titulo h4{
+
+.nomeNota:hover,
+.nomeNota.is-active{
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    background-color: #ffffff;
+}
+
+.nomeNota h4,
+.titulo h5,
+.titulo h4{
     font-weight: normal;
     margin-bottom: 3px;
 }
@@ -29,30 +125,79 @@
     font-size: 13px;
 }
 
-.containerAberto{
-    width: 76%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--var-corDoFundo);
+.nomeNota span:first-child{
+    min-width: 0;
+}
 
+.nomeNota h4,
+.nomeNota p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.deleteNoteButton{
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #4f4b4b;
+    font-size: 20px;
+    line-height: 1;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.deleteNoteButton:hover{
+    background-color: #e11d2a18;
+    color: var(--var-CorBtn);
 }
 
 .fechado{
     display: none;
 }
 
+.containerAberto{
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    background-color: var(--var-corDoFundo);
+    padding: 24px;
+    overflow: hidden;
+    position: relative;
+}
+
 .nota{
-    width: 950px;
-    height: 450px;
-    border-radius: 20px;
+    width: min(950px, 100%);
+    min-height: 0;
+    border-radius: 10px;
     box-shadow: 1px 1px 10px #a0a0a05e;
-    padding: 5px;
+    padding: 18px;
+    background-color: var(--var-CorContainerCaderno, var(--var-CorContainer));
+}
+
+.noteEditorShell{
+    height: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
 }
 
 .estilizacao{
     display: flex;
-
+    align-items: center;
+    gap: 12px;
+    min-height: 42px;
+    min-width: 0;
 }
 
 .estilizacao svg{
@@ -67,9 +212,381 @@
 textarea{
     border: 1px 1px #575757;
     background-color: #eff0f1c5;
-    width: 940px;
+    width: 100%;
     height: 395px;
     resize: none;
     border-radius: 3px;
 }
 
+.noteTitleInput{
+    flex: 1 1 auto;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    font-weight: 700;
+    outline: none;
+    min-width: 0;
+    color: inherit;
+}
+
+.noteEditDate{
+    margin: 0 0 2px 30px;
+    font-size: 13px;
+    color: #5f5f5f;
+}
+
+.autosaveStatus{
+    flex: 0 0 auto;
+    max-width: 42%;
+    font-size: 12px;
+    color: #5f5f5f;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.editorToolbar{
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 8px 0;
+    border-top: 1px solid #d5d5d5;
+    border-bottom: 1px solid #d5d5d5;
+}
+
+.editorToolbar button{
+    min-width: 38px;
+    height: 36px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d3d3d3;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.editorToolbar button:hover{
+    background-color: #c5c5c5;
+    transform: translateY(-1px);
+}
+
+.editorToolbar button:disabled{
+    cursor: default;
+    opacity: 0.55;
+}
+
+.noteEditor{
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 14px;
+    border-radius: 6px;
+    background-color: #eff0f1c5;
+    outline: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+.noteEditor:empty::before{
+    content: attr(data-placeholder);
+    color: #777777;
+}
+
+.noteEditor ul,
+.noteEditor ol{
+    margin-left: 24px;
+}
+
+.noteEditor h2{
+    margin: 10px 0;
+}
+
+.cadernoDescription{
+    margin: 10px 0 14px;
+    font-size: 13px;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.notaEmpty{
+    display: flex;
+    flex-direction: column;
+}
+
+.emptyNotesState{
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    color: #4f4b4b;
+    padding: 24px 8px;
+}
+
+.notesSidebarToggle{
+    display: none;
+}
+
+.notesSidebarOverlay{
+    display: none;
+}
+
+body.dark-mode .notesSidebarToggle{
+    background-color: var(--var-DarkMode-corContainers);
+    color: var(--var-DarkMode-corDaFonte);
+    border-color: #4a4a4a;
+}
+
+body.dark-mode .noteEditor{
+    background-color: var(--var-DarkMode-corPlaceholder);
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+body.dark-mode .noteTitleInput{
+    background-color: transparent;
+}
+
+body.dark-mode .notesSidebarOverlay{
+    background-color: rgba(0,0,0,0.55);
+}
+
+@media (max-width: 1024px){
+    .notesPage main{
+        height: calc(100vh - 48px);
+    }
+
+    .asideNotas{
+        width: 210px;
+        min-width: 210px;
+        flex-basis: 210px;
+    }
+
+    .containerAberto{
+        padding: 18px;
+    }
+
+    .nota{
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px){
+    .notesPage main{
+        height: calc(100vh - 56px);
+        min-height: 0;
+        flex-direction: row;
+        overflow: hidden;
+    }
+
+    .notesPage #aside{
+        flex: 0 0 60px;
+        width: 60px;
+        min-width: 60px;
+    }
+
+    .notesPage #aside:not(.closed){
+        flex-basis: 60px;
+        width: 60px;
+        min-width: 60px;
+    }
+
+    .notesPage #aside .backLink,
+    .notesPage #aside .matterPageTitle,
+    .notesPage #aside .profile p{
+        display: none;
+    }
+
+    .notesPage #aside .barraDePesquisa,
+    .notesPage #aside .profile{
+        width: 100%;
+    }
+
+    .asideNotas{
+        position: fixed;
+        z-index: 20;
+        top: 56px;
+        left: 0;
+        bottom: 0;
+        width: min(82vw, 320px);
+        min-width: 0;
+        max-width: 320px;
+        flex-basis: auto;
+        transform: translateX(-105%);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        box-shadow: 8px 0 18px rgba(0,0,0,0.18);
+    }
+
+    .notesPage.notes-sidebar-open .asideNotas{
+        transform: translateX(0);
+    }
+
+    .notesSidebarOverlay{
+        position: fixed;
+        z-index: 15;
+        inset: 56px 0 0 0;
+        background-color: rgba(0,0,0,0.28);
+    }
+
+    .notesPage.notes-sidebar-open .notesSidebarOverlay{
+        display: block;
+    }
+
+    .containerHeader{
+        padding: 18px 14px;
+    }
+
+    .containerAberto{
+        padding: 16px;
+    }
+
+    .notesSidebarToggle{
+        position: absolute;
+        z-index: 5;
+        top: 12px;
+        left: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 72px;
+        min-height: 40px;
+        border: 1px solid #d5d5d5;
+        border-radius: 5px;
+        background-color: var(--var-CorContainer);
+        color: inherit;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .notesSidebarToggle:hover{
+        transform: translateY(-1px);
+    }
+
+    .noteEditorShell{
+        padding-top: 54px;
+    }
+
+    .estilizacao{
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .matterHeaderColor{
+        margin-top: 5px;
+    }
+
+    .noteTitleInput{
+        flex: 1 1 calc(100% - 30px);
+        font-size: 22px;
+    }
+
+    .autosaveStatus{
+        max-width: 100%;
+        width: 100%;
+        padding-left: 30px;
+    }
+
+    .editorToolbar{
+        gap: 6px;
+        padding: 7px 0;
+    }
+
+    .editorToolbar button{
+        min-width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 425px){
+    .notesPage main{
+        height: calc(100vh - 52px);
+    }
+
+    .notesPage #aside,
+    .notesPage #aside:not(.closed){
+        flex-basis: 52px;
+        width: 52px;
+        min-width: 52px;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    .asideNotas{
+        top: 52px;
+        width: min(86vw, 300px);
+    }
+
+    .notesSidebarOverlay{
+        inset: 52px 0 0 0;
+    }
+
+    .containerAberto{
+        padding: 10px;
+    }
+
+    .notesSidebarToggle{
+        top: 10px;
+        left: 10px;
+        min-width: 66px;
+        min-height: 38px;
+    }
+
+    .nota{
+        border-radius: 8px;
+        padding: 14px;
+    }
+
+    .noteEditorShell{
+        padding-top: 50px;
+        gap: 8px;
+    }
+
+    .noteTitleInput{
+        font-size: 20px;
+    }
+
+    .noteEditDate{
+        margin-left: 0;
+    }
+
+    .autosaveStatus{
+        padding-left: 0;
+    }
+
+    .editorToolbar{
+        gap: 5px;
+    }
+
+    .editorToolbar button{
+        min-width: 38px;
+        height: 38px;
+    }
+
+    .noteEditor{
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .nomeNota{
+        min-height: 50px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 360px){
+    .containerAberto{
+        padding: 8px;
+    }
+
+    .nota{
+        padding: 12px;
+    }
+
+    .editorToolbar button{
+        min-width: 36px;
+    }
+}

@@ -4,7 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20515671-f8a0-48a5-b5ed-df73554361b9" name="Changes" comment="" />
+    <list default="true" id="20515671-f8a0-48a5-b5ed-df73554361b9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/CadernoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/CadernoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/MatterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/MatterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/NoteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Model/Matter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Model/Matter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Repository/CadernoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Repository/CadernoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Repository/MatterRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Repository/MatterRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Repository/NoteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Repository/NoteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/CadernoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/CadernoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/MatterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/MatterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/NoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/NoteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/cadernoNotas.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/cadernoNotas.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/homeCaderno.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/homeCaderno.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/reset.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/reset.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/cadernoNotas.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/cadernoNotas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/Controllers/CadernoControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/Controllers/CadernoControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/Controllers/MatterControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/Controllers/MatterControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/Controllers/NoteControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/Controllers/NoteControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/Services/CadernoServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/Services/CadernoServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/Services/MatterServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/br/com/notelab/backend/Services/MatterServiceTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -3,6 +3,7 @@ package br.com.notelab.backend.Services;
 import br.com.notelab.backend.Model.Caderno;
 import br.com.notelab.backend.Repository.CadernoRepository;
 import br.com.notelab.backend.Repository.MatterRepository;
+import br.com.notelab.backend.Repository.NoteRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -31,6 +32,9 @@ class CadernoServiceTest {
 
     @Mock
     private MatterRepository matterRepository;
+
+    @Mock
+    private NoteRepository noteRepository;
 
     @InjectMocks
     private CadernoService service;
@@ -128,22 +132,24 @@ class CadernoServiceTest {
 
     @Test
     void deleteCadernoDeletesWhenCadernoExists() {
-        when(cadernoRepository.existsById(1L)).thenReturn(true);
-        doNothing().when(cadernoRepository).deleteById(1L);
+        Caderno caderno = new Caderno(1L, 10L, 2L, "POO", "Orientacao a objetos");
+        when(cadernoRepository.findById(1L)).thenReturn(Optional.of(caderno));
+        doNothing().when(noteRepository).deleteByIdCaderno(1L);
 
         service.deleteCaderno(1L);
 
-        verify(cadernoRepository).deleteById(1L);
+        verify(noteRepository).deleteByIdCaderno(1L);
+        verify(cadernoRepository).delete(caderno);
     }
 
     @Test
     void deleteCadernoThrowsWhenCadernoDoesNotExist() {
-        when(cadernoRepository.existsById(99L)).thenReturn(false);
+        when(cadernoRepository.findById(99L)).thenReturn(Optional.empty());
 
         NoSuchElementException exception = assertThrows(NoSuchElementException.class,
                 () -> service.deleteCaderno(99L));
 
         assertEquals("Caderno nao encontrado", exception.getMessage());
-        verify(cadernoRepository, never()).deleteById(99L);
+        verify(cadernoRepository, never()).delete(any());
     }
 }

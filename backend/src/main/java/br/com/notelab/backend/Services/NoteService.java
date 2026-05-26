@@ -29,7 +29,24 @@ public class NoteService {
 
         note.setId(null);
         note.setName(note.getName().trim());
-        note.setNoteContent(note.getNoteContent().trim());
+        note.setNoteContent(normalizeContent(note.getNoteContent()));
+        note.setNoteEditDate(LocalDate.now());
+        return noteRepository.save(note);
+    }
+
+    public Note createNoteForUser(Note note, Long userId) {
+        validateCreate(note);
+
+        if (userId == null) {
+            throw new RuntimeException("userId e obrigatorio");
+        }
+        if (cadernoRepository.findByIdAndUserId(note.getIdCaderno(), userId).isEmpty()) {
+            throw new NoSuchElementException("Caderno nao encontrado");
+        }
+
+        note.setId(null);
+        note.setName(note.getName().trim());
+        note.setNoteContent(normalizeContent(note.getNoteContent()));
         note.setNoteEditDate(LocalDate.now());
         return noteRepository.save(note);
     }
@@ -46,6 +63,20 @@ public class NoteService {
         return noteRepository.findByIdCaderno(idCaderno);
     }
 
+    public List<Note> listByCadernoForUser(Long idCaderno, Long userId) {
+        if (idCaderno == null) {
+            throw new RuntimeException("idCaderno e obrigatorio");
+        }
+        if (userId == null) {
+            throw new RuntimeException("userId e obrigatorio");
+        }
+        if (cadernoRepository.findByIdAndUserId(idCaderno, userId).isEmpty()) {
+            throw new NoSuchElementException("Caderno nao encontrado");
+        }
+
+        return noteRepository.findByIdCaderno(idCaderno);
+    }
+
     public Note getNoteById(Long id) {
         if (id == null) {
             throw new RuntimeException("id e obrigatorio");
@@ -53,6 +84,22 @@ public class NoteService {
 
         return noteRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Nota nao encontrada"));
+    }
+
+    public Note getNoteByIdForUser(Long id, Long userId) {
+        if (id == null) {
+            throw new RuntimeException("id e obrigatorio");
+        }
+        if (userId == null) {
+            throw new RuntimeException("userId e obrigatorio");
+        }
+
+        Note note = getNoteById(id);
+        if (cadernoRepository.findByIdAndUserId(note.getIdCaderno(), userId).isEmpty()) {
+            throw new NoSuchElementException("Nota nao encontrada");
+        }
+
+        return note;
     }
 
     public Note updateNote(Long id, Note note) {
@@ -65,7 +112,23 @@ public class NoteService {
                 .orElseThrow(() -> new NoSuchElementException("Nota nao encontrada"));
 
         existingNote.setName(note.getName().trim());
-        existingNote.setNoteContent(note.getNoteContent().trim());
+        existingNote.setNoteContent(normalizeContent(note.getNoteContent()));
+        existingNote.setNoteEditDate(LocalDate.now());
+        return noteRepository.save(existingNote);
+    }
+
+    public Note updateNoteForUser(Long id, Note note, Long userId) {
+        if (id == null) {
+            throw new RuntimeException("id e obrigatorio");
+        }
+        if (userId == null) {
+            throw new RuntimeException("userId e obrigatorio");
+        }
+        validateUpdate(note);
+
+        Note existingNote = getNoteByIdForUser(id, userId);
+        existingNote.setName(note.getName().trim());
+        existingNote.setNoteContent(normalizeContent(note.getNoteContent()));
         existingNote.setNoteEditDate(LocalDate.now());
         return noteRepository.save(existingNote);
     }
@@ -79,6 +142,11 @@ public class NoteService {
         }
 
         noteRepository.deleteById(id);
+    }
+
+    public void deleteNoteForUser(Long id, Long userId) {
+        Note note = getNoteByIdForUser(id, userId);
+        noteRepository.delete(note);
     }
 
     private void validateCreate(Note note) {
@@ -99,8 +167,9 @@ public class NoteService {
         if (note.getName() == null || note.getName().isBlank()) {
             throw new RuntimeException("name e obrigatorio");
         }
-        if (note.getNoteContent() == null || note.getNoteContent().isBlank()) {
-            throw new RuntimeException("noteContent e obrigatorio");
-        }
+    }
+
+    private String normalizeContent(String content) {
+        return content == null ? "" : content.trim();
     }
 }

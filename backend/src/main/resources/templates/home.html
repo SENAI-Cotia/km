@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/reset.css}">
     <link rel="stylesheet" th:href="@{/home.css}">
+    <link rel="stylesheet" th:href="@{/homeCaderno.css}">
+    <meta name="_csrf" th:content="${_csrf?.token}">
+    <meta name="_csrf_header" th:content="${_csrf?.headerName}">
     <title>Home</title>
 </head>
 <body>
@@ -75,20 +78,23 @@
                         <div>
                             <label>Cor</label>
                             <div class="containerCores">
-                                <sapn class="cores" style="background-color: #F43545;"> </sapn>
-                                <sapn class="cores" style="background-color: #FA8901;"> </sapn>
-                                <sapn class="cores" style="background-color: #FAD717;"> </sapn>
-                                <sapn class="cores" style="background-color: #00BA71;"> </sapn>
-                                <sapn class="cores" style="background-color: #00C2DE;"> </sapn>
-                                <sapn class="cores" style="background-color: #00418D;"> </sapn>
-                                <sapn class="cores" style="background-color: #5F2879;"> </sapn>
+                                <span class="cores is-selected" data-color="#F43545" style="background-color: #F43545;"> </span>
+                                <span class="cores" data-color="#FA8901" style="background-color: #FA8901;"> </span>
+                                <span class="cores" data-color="#FAD717" style="background-color: #FAD717;"> </span>
+                                <span class="cores" data-color="#00BA71" style="background-color: #00BA71;"> </span>
+                                <span class="cores" data-color="#00C2DE" style="background-color: #00C2DE;"> </span>
+                                <span class="cores" data-color="#00418D" style="background-color: #00418D;"> </span>
+                                <span class="cores" data-color="#5F2879" style="background-color: #5F2879;"> </span>
                             </div>
                         </div>
-                        <button class="btn btnCriarMateria">Criar matéria</button>
+                        <p class="formFeedback" data-feedback="matter"></p>
+                        <button class="btn btnCriarMateria" type="button">Criar matéria</button>
                     </div>
 
                 </div>
             </div>
+
+            <div class="materias" id="listaMaterias"></div>
 
         </div>
 
@@ -140,6 +146,8 @@
             </div>
         </div>
 
+        <div class="ContainerListaCaderno" id="listaCadernos" hidden></div>
+
         <!-- Modal caderno -->
         <div class="modal" id="modalCaderno">
             <div class="modalContentCaderno">
@@ -152,13 +160,17 @@
                     <input id="nomeCaderno" type="text" placeholder="Digite o nome da matéria">
                 </div>
                 <div class="containerInput">
+                    <label for="descricaoCaderno">Descrição</label>
+                    <input id="descricaoCaderno" type="text" placeholder="Digite a descrição do caderno">
+                </div>
+                <div class="containerInput">
                     <label for="materias">matéria</label>
                     <select id="materias" name="">
-                        <option value="">java</option>
-                        <option value="">Javascript</option>
+                        <option value="">Carregando matérias...</option>
                     </select>
                 </div>
-                <button class="btn criarCaderno ">Criar caderno</button>
+                <p class="formFeedback" data-feedback="caderno"></p>
+                <button class="btn criarCaderno btnCriarCaderno" type="button">Criar caderno</button>
             </div>
         </div>
 

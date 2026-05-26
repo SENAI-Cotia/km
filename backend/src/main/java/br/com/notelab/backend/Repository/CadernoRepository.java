@@ -11,5 +11,7 @@ public interface CadernoRepository extends JpaRepository<Caderno, Long> {
 
     List<Caderno> findByMatterId(Long matterId);
 
+    List<Caderno> findByMatterIdAndUserId(Long matterId, Long userId);
+
     Optional<Caderno> findByIdAndUserId(Long id, Long userId);
 }

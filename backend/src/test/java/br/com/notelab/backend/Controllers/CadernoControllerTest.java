@@ -40,7 +40,7 @@ class CadernoControllerTest {
 
     @BeforeEach
     void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(new CadernoController(service)).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(new CadernoController(service, null)).build();
     }
 
     @Test

@@ -41,7 +41,7 @@ class NoteControllerTest {
 
     @BeforeEach
     void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(new NoteController(noteService)).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(new NoteController(noteService, null)).build();
     }
 
     @Test

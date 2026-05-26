@@ -40,7 +40,7 @@ class MatterControllerTest {
 
     @BeforeEach
     void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(new MatterController(service)).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(new MatterController(service, null)).build();
     }
 
     @Test

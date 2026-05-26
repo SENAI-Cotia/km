@@ -42,9 +42,8 @@ public class SecurityConfig {
                                 "/login",
                                 "/register",
                                 "/registrar",
-                                "/matter/**",
-                                "/caderno/**",
                                 "/img/**",
+                                "/script.js",
                                 "/**.css",
                                 "/*.css"
                         ).permitAll()
