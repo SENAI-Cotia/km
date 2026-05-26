@@ -19,6 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("busca");
     const colorButtons = document.querySelectorAll(".containerCores .cores[data-color]");
     const cadernoId = document.body.dataset.cadernoId;
+    const currentMatterId = document.body.dataset.matterId;
+    const currentMatterName = document.body.dataset.matterName;
+    const currentMatterColor = document.body.dataset.matterColor || "#F43545";
     const noteList = document.getElementById("listaNotas");
     const newNoteButton = document.getElementById("btnNovaNota");
     const noteTitleInput = document.getElementById("noteTitle");
@@ -30,12 +33,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const notesSidebar = document.getElementById("notesSidebar");
     const notesSidebarToggle = document.getElementById("notesSidebarToggle");
     const notesSidebarOverlay = document.getElementById("notesSidebarOverlay");
+    const editMatterNameInput = document.getElementById("nomeEditarMateria");
+    const editMatterButton = document.querySelector(".btnSalvarMateria");
+    const editMatterColorButtons = document.querySelectorAll(".editMatterColors .cores[data-edit-matter-color]");
+    const matterTitle = document.getElementById("matterTitle");
+    const editCadernoNameInput = document.getElementById("nomeEditarCaderno");
+    const editCadernoDescriptionInput = document.getElementById("descricaoEditarCaderno");
+    const editCadernoButton = document.querySelector(".btnSalvarCaderno");
 
     let matters = [];
     let cadernos = [];
     let notes = [];
     let selectedMatterId = null;
     let selectedMatterColor = "#F43545";
+    let selectedEditMatterColor = currentMatterColor;
+    let editingMatterId = null;
+    let editingCadernoId = null;
     let activeNote = null;
     let saveTimer = null;
     let isHydratingNote = false;
@@ -120,11 +133,19 @@ document.addEventListener("DOMContentLoaded", () => {
         .replaceAll("'", "&#039;");
 
     const getMatterName = (matterId) => {
+        if (currentMatterId && String(currentMatterId) === String(matterId)) {
+            return document.body.dataset.matterName || currentMatterName || "Materia";
+        }
+
         const matter = matters.find((item) => String(item.id) === String(matterId));
         return matter?.name || "Materia";
     };
 
     const getMatterColor = (matterId) => {
+        if (currentMatterId && String(currentMatterId) === String(matterId)) {
+            return selectedEditMatterColor || currentMatterColor;
+        }
+
         const matter = matters.find((item) => String(item.id) === String(matterId));
         return matter?.color || "#F43545";
     };
@@ -217,6 +238,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (modalId === "modalCaderno") {
             renderMatterOptions();
         }
+        if (modalId === "modalEditarMateria") {
+            prepareEditMatterModal();
+        }
     };
 
     const renderMatters = (items = matters) => {
@@ -235,6 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <span class="corCardMateria" style="background-color: ${escapeHtml(matter.color || "#F43545")}"></span>
                     <p>${escapeHtml(matter.name)}</p>
                 </div>
+                <button class="editMatterButton" type="button" data-matter-id="${matter.id}" title="Editar matéria">Editar</button>
                 <button class="deleteIconButton deleteMatterButton" type="button" data-matter-id="${matter.id}" title="Excluir matéria">×</button>
             </div>
         `).join("");
@@ -273,8 +298,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         cadernoList.innerHTML = items.map((caderno) => `
-            <div class="cardCaderno" data-caderno-id="${caderno.id}">
+            <div class="cardCaderno" data-caderno-id="${caderno.id}" data-matter-id="${caderno.matterId}">
                 <button class="deleteIconButton deleteCadernoButton" type="button" data-caderno-id="${caderno.id}" title="Excluir caderno">×</button>
+                <button class="editCadernoButton" type="button" data-caderno-id="${caderno.id}" data-caderno-name="${escapeHtml(caderno.name)}" data-caderno-description="${escapeHtml(caderno.description)}" title="Editar caderno">Editar</button>
                 <div class="tituloCaderno">
                     <span class="cadernoMatterColor" style="background-color: ${escapeHtml(getMatterColor(caderno.matterId))}"></span>
                     <div>
@@ -340,7 +366,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const createCaderno = async () => {
         const name = cadernoNameInput?.value.trim();
         const description = cadernoDescriptionInput?.value.trim();
-        const matterId = cadernoMatterSelect?.value;
+        const matterId = cadernoMatterSelect?.value || currentMatterId;
         setFeedback("caderno");
 
         if (!name || !description || !matterId) {
@@ -358,7 +384,9 @@ document.addEventListener("DOMContentLoaded", () => {
             selectedMatterId = matterId;
             cadernoNameInput.value = "";
             cadernoDescriptionInput.value = "";
-            cadernoMatterSelect.value = "";
+            if (cadernoMatterSelect) {
+                cadernoMatterSelect.value = "";
+            }
             await loadCadernos(selectedMatterId);
             closeModal(document.getElementById("modalCaderno"));
             setFeedback("caderno");
@@ -384,6 +412,152 @@ document.addEventListener("DOMContentLoaded", () => {
             if (emptyCadernoState) {
                 emptyCadernoState.hidden = true;
             }
+        }
+    };
+
+    const prepareEditMatterModal = () => {
+        const matterIdToEdit = editingMatterId || currentMatterId;
+        if (!matterIdToEdit) {
+            return;
+        }
+
+        const matter = matters.find((item) => String(item.id) === String(matterIdToEdit));
+        const fallbackName = currentMatterId ? document.body.dataset.matterName || currentMatterName : "";
+        const fallbackColor = currentMatterId ? document.body.dataset.matterColor || currentMatterColor : "#F43545";
+
+        if (editMatterNameInput) {
+            editMatterNameInput.value = matter?.name || fallbackName || "";
+        }
+
+        selectedEditMatterColor = matter?.color || fallbackColor;
+        editMatterColorButtons.forEach((button) => {
+            button.classList.toggle("is-selected", button.dataset.editMatterColor === selectedEditMatterColor);
+        });
+        setFeedback("editMatter");
+    };
+
+    const openEditMatterModal = (matterIdToEdit) => {
+        editingMatterId = matterIdToEdit;
+        prepareEditMatterModal();
+        openModal("modalEditarMateria");
+    };
+
+    const applyMatterUpdateToPage = (matter) => {
+        if (!matter) {
+            return;
+        }
+
+        const updatedColor = matter.color || "#F43545";
+
+        matters = matters.map((item) => item.id === matter.id ? matter : item);
+        selectedEditMatterColor = updatedColor;
+
+        if (currentMatterId && String(currentMatterId) === String(matter.id)) {
+            document.body.dataset.matterName = matter.name;
+            document.body.dataset.matterColor = updatedColor;
+            document.title = matter.name;
+        }
+
+        if (matterTitle) {
+            matterTitle.textContent = matter.name;
+        }
+
+        document.querySelectorAll(".matterPageTitle p").forEach((item) => {
+            item.textContent = matter.name;
+        });
+        document.querySelectorAll(".matterPageTitle .corCardMateria, .matterHeaderColor, .cadernoMatterColor").forEach((item) => {
+            item.style.backgroundColor = updatedColor;
+        });
+
+        document.querySelectorAll(`.cardCaderno[data-matter-id="${matter.id}"] .cadernoMatterColor`).forEach((item) => {
+            item.style.backgroundColor = updatedColor;
+        });
+        document.querySelectorAll(`.cardCaderno[data-matter-id="${matter.id}"] h6`).forEach((item) => {
+            item.textContent = matter.name;
+        });
+    };
+
+    const updateMatter = async () => {
+        const matterIdToEdit = editingMatterId || currentMatterId;
+        if (!matterIdToEdit) {
+            return;
+        }
+
+        const name = editMatterNameInput?.value.trim();
+        setFeedback("editMatter");
+
+        if (!name) {
+            setFeedback("editMatter", "Informe o nome da materia.", true);
+            return;
+        }
+
+        try {
+            setLoading(editMatterButton, true, "Salvando...");
+            const updated = await apiFetch(`/matter/${matterIdToEdit}`, {
+                method: "PUT",
+                body: JSON.stringify({ name, color: selectedEditMatterColor })
+            });
+
+            applyMatterUpdateToPage(updated);
+            renderMatters();
+            renderMatterOptions();
+            renderCadernos();
+            closeModal(document.getElementById("modalEditarMateria"));
+            editingMatterId = null;
+            setFeedback("editMatter");
+        } catch (error) {
+            setFeedback("editMatter", error.message, true);
+        } finally {
+            setLoading(editMatterButton, false);
+        }
+    };
+
+    const openEditCadernoModal = (cadernoIdToEdit) => {
+        const caderno = cadernos.find((item) => String(item.id) === String(cadernoIdToEdit));
+        const card = document.querySelector(`.cardCaderno[data-caderno-id="${cadernoIdToEdit}"]`);
+
+        editingCadernoId = cadernoIdToEdit;
+        if (editCadernoNameInput) {
+            editCadernoNameInput.value = caderno?.name || card?.querySelector("h4")?.textContent || "";
+        }
+        if (editCadernoDescriptionInput) {
+            editCadernoDescriptionInput.value = caderno?.description || card?.querySelector("p")?.textContent || "";
+        }
+
+        setFeedback("editCaderno");
+        openModal("modalEditarCaderno");
+    };
+
+    const updateCaderno = async () => {
+        if (!editingCadernoId) {
+            return;
+        }
+
+        const name = editCadernoNameInput?.value.trim();
+        const description = editCadernoDescriptionInput?.value.trim();
+        setFeedback("editCaderno");
+
+        if (!name || !description) {
+            setFeedback("editCaderno", "Preencha nome e descricao.", true);
+            return;
+        }
+
+        try {
+            setLoading(editCadernoButton, true, "Salvando...");
+            const updated = await apiFetch(`/caderno/${editingCadernoId}`, {
+                method: "PUT",
+                body: JSON.stringify({ name, description })
+            });
+
+            cadernos = cadernos.map((caderno) => caderno.id === updated.id ? updated : caderno);
+            renderCadernos();
+            closeModal(document.getElementById("modalEditarCaderno"));
+            editingCadernoId = null;
+            setFeedback("editCaderno");
+        } catch (error) {
+            setFeedback("editCaderno", error.message, true);
+        } finally {
+            setLoading(editCadernoButton, false);
         }
     };
 
@@ -711,6 +885,14 @@ document.addEventListener("DOMContentLoaded", () => {
         cadernoButton.addEventListener("click", createCaderno);
     }
 
+    if (editMatterButton) {
+        editMatterButton.addEventListener("click", updateMatter);
+    }
+
+    if (editCadernoButton) {
+        editCadernoButton.addEventListener("click", updateCaderno);
+    }
+
     if (newNoteButton) {
         newNoteButton.addEventListener("click", createNote);
     }
@@ -762,8 +944,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    editMatterColorButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            selectedEditMatterColor = button.dataset.editMatterColor || "#F43545";
+            editMatterColorButtons.forEach((item) => {
+                item.classList.toggle("is-selected", item === button);
+            });
+        });
+    });
+
     if (matterList) {
         matterList.addEventListener("click", (event) => {
+            const editButton = event.target.closest(".editMatterButton[data-matter-id]");
+            if (editButton) {
+                event.preventDefault();
+                event.stopPropagation();
+                openEditMatterModal(editButton.dataset.matterId);
+                return;
+            }
+
             const deleteButton = event.target.closest(".deleteMatterButton[data-matter-id]");
             if (deleteButton) {
                 event.preventDefault();
@@ -783,6 +982,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (cadernoList) {
         cadernoList.addEventListener("click", (event) => {
+            const editButton = event.target.closest(".editCadernoButton[data-caderno-id]");
+            if (editButton) {
+                event.preventDefault();
+                event.stopPropagation();
+                openEditCadernoModal(editButton.dataset.cadernoId);
+                return;
+            }
+
             const deleteButton = event.target.closest(".deleteCadernoButton[data-caderno-id]");
             if (deleteButton) {
                 event.preventDefault();
@@ -863,7 +1070,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (cadernoList) {
-        loadCadernos();
+        loadCadernos(currentMatterId || null);
     }
 
     if (noteList) {

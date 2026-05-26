@@ -85,6 +85,27 @@ public class MatterService {
         return repository.save(existingMatter);
     }
 
+    public Matter updateMatterForUser(Long id, Matter matter, Long userId) {
+        if (id == null) {
+            throw new RuntimeException("id e obrigatorio");
+        }
+        if (userId == null) {
+            throw new RuntimeException("userId e obrigatorio");
+        }
+        validateMatterName(matter);
+
+        Matter existingMatter = repository.findByIdAndUserId(id, userId)
+                .orElseThrow(() -> new NoSuchElementException("Materia nao encontrada"));
+
+        existingMatter.setName(matter.getName().trim());
+        if (matter.getColor() != null) {
+            existingMatter.setColor(normalizeColor(matter.getColor()));
+        } else {
+            ensureColor(existingMatter);
+        }
+        return repository.save(existingMatter);
+    }
+
     public List<Matter> getMattersByUserId(Long userId) {
         if (userId == null) {
             throw new RuntimeException("userId e obrigatorio");

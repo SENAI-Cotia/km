@@ -80,9 +80,11 @@ public class MatterController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateMatter(@PathVariable Long id, @RequestBody Matter matter) {
+    public ResponseEntity<?> updateMatter(@PathVariable Long id, @RequestBody Matter matter, Authentication authentication) {
         try {
-            Matter updated = service.updateMatter(id, matter);
+            Matter updated = authenticatedUserService == null || authentication == null
+                    ? service.updateMatter(id, matter)
+                    : service.updateMatterForUser(id, matter, authenticatedUserService.getAuthenticatedUserId(authentication));
             return ResponseEntity.ok(updated);
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));

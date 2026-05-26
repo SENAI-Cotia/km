@@ -90,9 +90,11 @@ public class CadernoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCaderno(@PathVariable Long id, @RequestBody Caderno caderno) {
+    public ResponseEntity<?> updateCaderno(@PathVariable Long id, @RequestBody Caderno caderno, Authentication authentication) {
         try {
-            Caderno updated = service.updateCaderno(id, caderno);
+            Caderno updated = authenticatedUserService == null || authentication == null
+                    ? service.updateCaderno(id, caderno)
+                    : service.updateCadernoForUser(id, caderno, authenticatedUserService.getAuthenticatedUserId(authentication));
             return ResponseEntity.ok(updated);
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(404).body(Map.of("error", e.getMessage()));

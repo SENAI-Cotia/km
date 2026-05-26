@@ -133,7 +133,20 @@ body.dark-mode .editorToolbar button{
     color: var(--var-DarkMode-corDaFonte);
 }
 
+body.dark-mode .editIconButton,
+body.dark-mode .editMatterButton,
+body.dark-mode .editCadernoButton{
+    background-color: #454545;
+    color: var(--var-DarkMode-corDaFonte);
+}
+
 body.dark-mode .editorToolbar button:hover{
+    background-color: #555555;
+}
+
+body.dark-mode .editIconButton:hover,
+body.dark-mode .editMatterButton:hover,
+body.dark-mode .editCadernoButton:hover{
     background-color: #555555;
 }
 

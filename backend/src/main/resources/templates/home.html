@@ -174,6 +174,52 @@
             </div>
         </div>
 
+        <div class="modal" id="modalEditarMateria">
+            <div class="modalContent">
+                <div class="modalHeader">
+                    <h2>Editar matéria</h2>
+                    <span class="close">X</span>
+                </div>
+                <div class="containerInput">
+                    <label for="nomeEditarMateria">Nome</label>
+                    <input id="nomeEditarMateria" type="text" placeholder="Digite o nome da matéria">
+                </div>
+                <div>
+                    <label>Cor</label>
+                    <div class="containerCores editMatterColors">
+                        <span class="cores" data-edit-matter-color="#F43545" style="background-color: #F43545;"> </span>
+                        <span class="cores" data-edit-matter-color="#FA8901" style="background-color: #FA8901;"> </span>
+                        <span class="cores" data-edit-matter-color="#FAD717" style="background-color: #FAD717;"> </span>
+                        <span class="cores" data-edit-matter-color="#00BA71" style="background-color: #00BA71;"> </span>
+                        <span class="cores" data-edit-matter-color="#00C2DE" style="background-color: #00C2DE;"> </span>
+                        <span class="cores" data-edit-matter-color="#00418D" style="background-color: #00418D;"> </span>
+                        <span class="cores" data-edit-matter-color="#5F2879" style="background-color: #5F2879;"> </span>
+                    </div>
+                </div>
+                <p class="formFeedback" data-feedback="editMatter"></p>
+                <button class="btn btnSalvarMateria" type="button">Salvar matéria</button>
+            </div>
+        </div>
+
+        <div class="modal" id="modalEditarCaderno">
+            <div class="modalContentCaderno">
+                <div class="modalHeader">
+                    <h2>Editar caderno</h2>
+                    <span class="close">X</span>
+                </div>
+                <div class="containerInput">
+                    <label for="nomeEditarCaderno">Nome</label>
+                    <input id="nomeEditarCaderno" type="text" placeholder="Digite o nome do caderno">
+                </div>
+                <div class="containerInput">
+                    <label for="descricaoEditarCaderno">Descrição</label>
+                    <input id="descricaoEditarCaderno" type="text" placeholder="Digite a descrição do caderno">
+                </div>
+                <p class="formFeedback" data-feedback="editCaderno"></p>
+                <button class="btn btnSalvarCaderno" type="button">Salvar caderno</button>
+            </div>
+        </div>
+
     </section>
 </main>
 <script th:src="@{/script.js}" defer></script>

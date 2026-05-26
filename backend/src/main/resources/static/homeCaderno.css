@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 6px;
     padding: 5px;
     background-color: #fff;
     border-radius: 5px;
@@ -24,6 +25,13 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    min-width: 0;
+}
+
+.infoCard p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .corCardMateria{
@@ -52,7 +60,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 16px;
+    padding: 42px 16px 16px;
     border-radius: 8px;
     box-shadow: 1px 1px 5px #5f5f5fb7;
     cursor: pointer;
@@ -93,7 +101,46 @@
 .matterHeaderActions{
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
+}
+
+.editIconButton,
+.editMatterButton,
+.editCadernoButton{
+    min-height: 32px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d3d3d3;
+    color: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.editIconButton{
+    padding: 0 12px;
+}
+
+.editMatterButton{
+    flex: 0 0 auto;
+    min-height: 28px;
+    padding: 0 8px;
+    font-size: 12px;
+}
+
+.editCadernoButton{
+    position: absolute;
+    top: 8px;
+    right: 42px;
+    padding: 0 9px;
+    font-size: 12px;
+}
+
+.editIconButton:hover,
+.editMatterButton:hover,
+.editCadernoButton:hover{
+    background-color: #c5c5c5;
+    transform: translateY(-1px);
 }
 
 .cardCaderno:hover{
@@ -188,6 +235,10 @@ h6{
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
         padding: 14px;
     }
+
+    .matterHeaderActions{
+        justify-content: flex-start;
+    }
 }
 
 @media (max-width: 425px){
@@ -198,6 +249,16 @@ h6{
 
     .matterHeader{
         padding: 16px 12px 4px;
+    }
+
+    .matterHeaderActions,
+    .matterHeaderActions .btn,
+    .editIconButton{
+        width: 100%;
+    }
+
+    .editIconButton{
+        min-height: 38px;
     }
 }
 

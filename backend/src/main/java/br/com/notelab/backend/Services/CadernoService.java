@@ -73,6 +73,23 @@ public class CadernoService {
         return cadernoRepository.save(existingCaderno);
     }
 
+    public Caderno updateCadernoForUser(Long id, Caderno caderno, Long userId) {
+        if (id == null) {
+            throw new RuntimeException("id e obrigatorio");
+        }
+        if (userId == null) {
+            throw new RuntimeException("userId e obrigatorio");
+        }
+        validateUpdate(caderno);
+
+        Caderno existingCaderno = cadernoRepository.findByIdAndUserId(id, userId)
+                .orElseThrow(() -> new NoSuchElementException("Caderno nao encontrado"));
+
+        existingCaderno.setName(caderno.getName().trim());
+        existingCaderno.setDescription(caderno.getDescription().trim());
+        return cadernoRepository.save(existingCaderno);
+    }
+
     @Transactional
     public void deleteCaderno(Long id) {
         if (id == null) {

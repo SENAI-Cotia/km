@@ -7,10 +7,12 @@
     <link rel="stylesheet" th:href="@{/reset.css}">
     <link rel="stylesheet" th:href="@{/home.css}">
     <link rel="stylesheet" th:href="@{/homeCaderno.css}">
+    <meta name="_csrf" th:content="${_csrf?.token}">
+    <meta name="_csrf_header" th:content="${_csrf?.headerName}">
     <title th:text="${matter.name}">Materia</title>
 </head>
 
-<body>
+<body th:attr="data-matter-id=${matter.id}, data-matter-name=${matter.name}, data-matter-color=${matter.color}">
 <header>
     <div class="logo">
         <a th:href="@{/home}">
@@ -56,25 +58,31 @@
     <section class="fullOpen pageContent">
         <div class="containerCaderno matterHeader">
             <div>
-                <h2 th:text="${matter.name}">Materia</h2>
+                <h2 id="matterTitle" th:text="${matter.name}">Materia</h2>
                 <p>Todos os cadernos desta materia</p>
             </div>
             <div class="matterHeaderActions">
                 <span class="matterHeaderColor" th:style="'background-color:' + ${matter.color}"></span>
+                <button class="btn criarCaderno openModal" data-modal="modalCaderno" type="button">Criar caderno</button>
+                <button class="editIconButton openModal" data-modal="modalEditarMateria" type="button" title="Editar materia">Editar</button>
                 <button class="deleteIconButton deleteMatterButton" type="button" th:attr="data-matter-id=${matter.id}" title="Excluir matéria">×</button>
             </div>
         </div>
 
-        <div class="ContainerCriarNota" th:if="${#lists.isEmpty(cadernos)}">
+        <div class="ContainerCriarNota" th:hidden="${!#lists.isEmpty(cadernos)}">
             <div class="criarNota">
                 <img th:src="@{/img/book.svg}" alt="note-svg" style="height: 70px; margin: 10px;">
                 <p>Nenhum caderno nesta materia</p>
+                <div class="btnDiv">
+                    <button data-modal="modalCaderno" class="btn criarCaderno openModal" type="button">Criar caderno</button>
+                </div>
             </div>
         </div>
 
-        <div class="ContainerListaCaderno" th:if="${!#lists.isEmpty(cadernos)}">
+        <div class="ContainerListaCaderno" id="listaCadernos" th:hidden="${#lists.isEmpty(cadernos)}">
             <div class="cardCaderno" th:each="caderno : ${cadernos}" th:attr="data-caderno-id=${caderno.id}">
                 <button class="deleteIconButton deleteCadernoButton" type="button" th:attr="data-caderno-id=${caderno.id}" title="Excluir caderno">×</button>
+                <button class="editCadernoButton" type="button" th:attr="data-caderno-id=${caderno.id}, data-caderno-name=${caderno.name}, data-caderno-description=${caderno.description}" title="Editar caderno">Editar</button>
                 <div class="tituloCaderno">
                     <span class="cadernoMatterColor" th:style="'background-color:' + ${matter.color}"></span>
                     <div>
@@ -83,6 +91,71 @@
                     </div>
                 </div>
                 <p th:text="${caderno.description}">Descricao</p>
+            </div>
+        </div>
+
+        <div class="modal" id="modalCaderno">
+            <div class="modalContentCaderno">
+                <div class="modalHeader">
+                    <h2>Criar caderno</h2>
+                    <span class="close">X</span>
+                </div>
+                <div class="containerInput">
+                    <label for="nomeCaderno">Nome</label>
+                    <input id="nomeCaderno" type="text" placeholder="Digite o nome do caderno">
+                </div>
+                <div class="containerInput">
+                    <label for="descricaoCaderno">Descricao</label>
+                    <input id="descricaoCaderno" type="text" placeholder="Digite a descricao do caderno">
+                </div>
+                <p class="formFeedback" data-feedback="caderno"></p>
+                <button class="btn criarCaderno btnCriarCaderno" type="button">Criar caderno</button>
+            </div>
+        </div>
+
+        <div class="modal" id="modalEditarMateria">
+            <div class="modalContent">
+                <div class="modalHeader">
+                    <h2>Editar materia</h2>
+                    <span class="close">X</span>
+                </div>
+                <div class="containerInput">
+                    <label for="nomeEditarMateria">Nome</label>
+                    <input id="nomeEditarMateria" type="text" placeholder="Digite o nome da materia" th:value="${matter.name}">
+                </div>
+                <div>
+                    <label>Cor</label>
+                    <div class="containerCores editMatterColors">
+                        <span class="cores" data-edit-matter-color="#F43545" style="background-color: #F43545;"> </span>
+                        <span class="cores" data-edit-matter-color="#FA8901" style="background-color: #FA8901;"> </span>
+                        <span class="cores" data-edit-matter-color="#FAD717" style="background-color: #FAD717;"> </span>
+                        <span class="cores" data-edit-matter-color="#00BA71" style="background-color: #00BA71;"> </span>
+                        <span class="cores" data-edit-matter-color="#00C2DE" style="background-color: #00C2DE;"> </span>
+                        <span class="cores" data-edit-matter-color="#00418D" style="background-color: #00418D;"> </span>
+                        <span class="cores" data-edit-matter-color="#5F2879" style="background-color: #5F2879;"> </span>
+                    </div>
+                </div>
+                <p class="formFeedback" data-feedback="editMatter"></p>
+                <button class="btn btnSalvarMateria" type="button">Salvar materia</button>
+            </div>
+        </div>
+
+        <div class="modal" id="modalEditarCaderno">
+            <div class="modalContentCaderno">
+                <div class="modalHeader">
+                    <h2>Editar caderno</h2>
+                    <span class="close">X</span>
+                </div>
+                <div class="containerInput">
+                    <label for="nomeEditarCaderno">Nome</label>
+                    <input id="nomeEditarCaderno" type="text" placeholder="Digite o nome do caderno">
+                </div>
+                <div class="containerInput">
+                    <label for="descricaoEditarCaderno">Descricao</label>
+                    <input id="descricaoEditarCaderno" type="text" placeholder="Digite a descricao do caderno">
+                </div>
+                <p class="formFeedback" data-feedback="editCaderno"></p>
+                <button class="btn btnSalvarCaderno" type="button">Salvar caderno</button>
             </div>
         </div>
     </section>
