@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/reset.css}">
+    <link rel="stylesheet" th:href="@{/home.css}">
+    <link rel="stylesheet" th:href="@{/homeCaderno.css}">
+    <title>Cadernos</title>
+    <script>
+
+    </script>
+</head>
+
+<body>
+<header>
+    <div class="logo">
+        <img th:src="@{/img/logo.png}"  alt="notelab-logo">
+    </div>
+    <div class="iconesNav">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" id="btnSidebar">
+            <path
+                    d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H88V56H216V200Z" />
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" id="btnDarkmode">
+            <path
+                    d="M320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576C388.8 576 451.3 548.8 497.3 504.6C504.6 497.6 506.7 486.7 502.6 477.5C498.5 468.3 488.9 462.6 478.8 463.4C473.9 463.8 469 464 464 464C362.4 464 280 381.6 280 280C280 207.9 321.5 145.4 382.1 115.2C391.2 110.7 396.4 100.9 395.2 90.8C394 80.7 386.6 72.5 376.7 70.3C358.4 66.2 339.4 64 320 64z" />
+        </svg>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"id="sunDarkmode" style="display: none;">
+            <path
+                    d="M9.99826 0.00347103C10.2899 0.00347103 10.5641 0.156196 10.7134 0.40958L12.6402 3.62374L16.2784 2.71086C16.5631 2.64144 16.8651 2.72475 17.07 2.92954C17.2748 3.13433 17.3581 3.43978 17.2887 3.72093L16.3756 7.35509L19.5938 9.2815C19.8438 9.43075 20 9.70496 20 9.99653C20 10.2881 19.8473 10.5623 19.5938 10.7116L16.3756 12.6414L17.2887 16.2756C17.3581 16.5602 17.2748 16.8622 17.07 17.067C16.8651 17.2718 16.5596 17.3586 16.2784 17.2891L12.6436 16.3763L10.7169 19.5939C10.5676 19.8438 10.2934 20 10.0017 20C9.71012 20 9.43586 19.8473 9.28658 19.5939L7.35636 16.3763L3.72158 17.2891C3.4369 17.3586 3.13834 17.2753 2.93005 17.0705C2.72175 16.8657 2.63843 16.5602 2.70786 16.2756L3.61743 12.6414L0.402708 10.715C0.152751 10.5623 0 10.2916 0 10C0 9.70844 0.152751 9.43422 0.40618 9.28497L3.6209 7.35856L2.70786 3.72093C2.63843 3.43631 2.71828 3.1378 2.92658 2.92954C3.13487 2.72128 3.4369 2.64144 3.72158 2.71086L7.35636 3.62027L9.28311 0.406109L9.3456 0.315863C9.50182 0.118015 9.74136 0 9.99826 0V0.00347103ZM9.99826 5.00174C7.23833 5.00174 4.99913 7.24054 4.99913 10C4.99913 12.7595 7.23833 14.9983 9.99826 14.9983C12.7582 14.9983 14.9974 12.7595 14.9974 10C14.9974 7.24054 12.7582 5.00174 9.99826 5.00174ZM9.99826 13.3322C8.15831 13.3322 6.66551 11.8396 6.66551 10C6.66551 8.16036 8.15831 6.66782 9.99826 6.66782C11.8382 6.66782 13.331 8.16036 13.331 10C13.331 11.8396 11.8382 13.3322 9.99826 13.3322Z"
+                    fill="white" />
+        </svg>
+    </div>
+</header>
+<main>
+    <aside id="aside">
+        <div class="barraDePesquisa">
+            <div class="search">
+                <input id="busca" type="text" placeholder="Pesquisar">
+            </div>
+
+            <hr>
+
+            <div class="CriarMateria ">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" data-modal="modalMateria"
+                     class="openModal" style="height: 20px;">
+                    <path
+                            d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
+                </svg>
+                <button data-modal="modalMateria" class="openModal btnMateria">
+                    Criar Matéria
+                </button>
+
+                <!-- modal criar matéria -->
+
+                <div id="modalMateria" class="modal">
+
+                    <div class="modalContent">
+                        <div class="modalHeader">
+                            <h2>Criar matéria</h2>
+                            <span class="close">X</span>
+
+                        </div>
+
+                        <div class="containerInput">
+                            <label for="nomeMateria">Nome</label>
+                            <input id="nomeMateria" type="text" placeholder="Digite o nome da matéria">
+                        </div>
+
+                        <div>
+                            <label >Cor</label>
+                            <div class="containerCores">
+                                <sapn class="cores" style="background-color: #F43545;"> </sapn>
+                                <sapn class="cores" style="background-color: #FA8901;"> </sapn>
+                                <sapn class="cores" style="background-color: #FAD717;"> </sapn>
+                                <sapn class="cores" style="background-color: #00BA71;"> </sapn>
+                                <sapn class="cores" style="background-color: #00C2DE;"> </sapn>
+                                <sapn class="cores" style="background-color: #00418D;"> </sapn>
+                                <sapn class="cores" style="background-color: #5F2879;"> </sapn>
+                            </div>
+                        </div>
+                        <button class="btn btnCriarMateria">Criar matéria</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="materias">
+                <div class="cardMateria">
+                    <div class="infoCard">
+                        <span class="corCardMateria"></span>
+                        <p>Java</p>
+                    </div>
+                    <svg width="15" height="15" viewBox="0 0 15 15"  xmlns="http://www.w3.org/2000/svg" class="openModal" data-modal="modalEditar">
+                        <path
+                                d="M13.9602 0.48621C13.312 -0.16207 12.264 -0.16207 11.6158 0.48621L10.8935 1.2085L13.7915 4.10652L14.5138 3.38423C15.1621 2.73595 15.1621 1.68805 14.5138 1.03977L13.9602 0.48621ZM5.10336 6.99862C4.92279 7.17919 4.78366 7.4012 4.70373 7.6469L3.82752 10.2755C3.74167 10.5301 3.80976 10.8113 3.99921 11.0037C4.18866 11.1962 4.46988 11.2613 4.72742 11.1754L7.35606 10.2992C7.5988 10.2193 7.82081 10.0802 8.00434 9.8996L12.788 5.11002L9.88998 2.212L5.10336 6.99862ZM2.84178 1.73837C1.27288 1.73837 0 3.01125 0 4.58015V12.1582C0 13.7271 1.27288 15 2.84178 15H10.4199C11.9888 15 13.2616 13.7271 13.2616 12.1582V9.31644C13.2616 8.79249 12.8383 8.36918 12.3144 8.36918C11.7904 8.36918 11.3671 8.79249 11.3671 9.31644V12.1582C11.3671 12.6822 10.9438 13.1055 10.4199 13.1055H2.84178C2.31783 13.1055 1.89452 12.6822 1.89452 12.1582V4.58015C1.89452 4.05619 2.31783 3.63289 2.84178 3.63289H5.68356C6.20751 3.63289 6.63082 3.20958 6.63082 2.68563C6.63082 2.16168 6.20751 1.73837 5.68356 1.73837H2.84178Z"
+                                fill="#4F4B4B" />
+                    </svg>
+                </div>
+
+                <!-- modal editar/excluir matérias -->
+
+                <div id="modalEditar" class="modalEditar">
+                    <div>
+                        <button class="btnEditar">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                        d="M11.0279 0.662423L9.62467 2.06539L13.9343 6.37426L15.3375 4.9713C15.7625 4.54947 16 3.97454 16 3.37461C16 2.77468 15.7625 2.19974 15.3375 1.77792L14.2218 0.662423C13.7999 0.237472 13.2249 0 12.6248 0C12.0248 0 11.4498 0.237472 11.0279 0.662423ZM8.56524 3.12464L1.8399 9.84573C1.50551 10.1801 1.26174 10.5988 1.13361 11.055L0.0273065 15.0483C-0.0445722 15.3076 0.0273064 15.5888 0.221066 15.7794C0.414826 15.97 0.692966 16.045 0.952354 15.9731L4.94631 14.8639C5.40258 14.7358 5.81823 14.4952 6.15575 14.1577L12.8748 7.43351L8.56524 3.12464Z"
+                                        fill="#040404" />
+                            </svg>
+                            Editar
+                        </button>
+                        <button class="btnEditar">
+                            <svg width="16" height="19" viewBox="0 0 16 19" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                        d="M4.88214 0.788068L4.57143 1.72727H1.14286C0.510714 1.72727 0 2.24186 0 2.87879C0 3.51572 0.510714 4.0303 1.14286 4.0303H14.8571C15.4893 4.0303 16 3.51572 16 2.87879C16 2.24186 15.4893 1.72727 14.8571 1.72727H11.4286L11.1179 0.788068C10.9607 0.316667 10.525 0 10.0321 0H5.96786C5.475 0 5.03929 0.316667 4.88214 0.788068ZM14.8571 5.75758H1.14286L1.89643 17.3843C1.95357 18.2947 2.70357 19 3.60714 19H12.3929C13.2964 19 14.0464 18.2947 14.1036 17.3843L14.8571 5.75758Z"
+                                        fill="black" />
+                            </svg>
+                            Excluir
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="profile openModal" data-modal="modalPerfil">
+            <svg width="30" height="30" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                        d="M17.5 17.0625C21.1258 17.0625 24.0625 14.1258 24.0625 10.5C24.0625 6.87422 21.1258 3.9375 17.5 3.9375C13.8742 3.9375 10.9375 6.87422 10.9375 10.5C10.9375 14.1258 13.8742 17.0625 17.5 17.0625ZM15.8758 20.125C10.4891 20.125 6.125 24.4891 6.125 29.8758C6.125 30.7727 6.85234 31.5 7.74922 31.5H27.2508C28.1477 31.5 28.875 30.7727 28.875 29.8758C28.875 24.4891 24.5109 20.125 19.1242 20.125H15.8758Z" />
+            </svg>
+            <p>nome-sobrenome</p>
+        </div>
+
+        <!-- modal perfil -->
+
+        <div id="modalPerfil" class="modalPerfil modal">
+            <div class="modalSair">
+                <svg width="16" height="14" viewBox="0 0 16 14" fill="#0000000" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                            d="M5.00024 2C5.5534 2 6.00029 1.55313 6.00029 1C6.00029 0.446875 5.5534 0 5.00024 0H3.00015C1.34382 0 0 1.34375 0 3V11C0 12.6562 1.34382 14 3.00015 14H5.00024C5.5534 14 6.00029 13.5531 6.00029 13C6.00029 12.4469 5.5534 12 5.00024 12H3.00015C2.44699 12 2.0001 11.5531 2.0001 11V3C2.0001 2.44687 2.44699 2 3.00015 2H5.00024ZM15.707 7.70625C16.0977 7.31563 16.0977 6.68125 15.707 6.29062L11.7068 2.29063C11.3162 1.9 10.6818 1.9 10.2911 2.29063C9.90048 2.68125 9.90048 3.31563 10.2911 3.70625L12.585 6H6.00029C5.44714 6 5.00024 6.44687 5.00024 7C5.00024 7.55313 5.44714 8 6.00029 8H12.585L10.2911 10.2937C9.90048 10.6844 9.90048 11.3188 10.2911 11.7094C10.6818 12.1 11.3162 12.1 11.7068 11.7094L15.707 7.70938V7.70625Z"
+                            fill="black" />
+                </svg>
+                <button>sair</button>
+            </div>
+        </div>
+
+    </aside>
+
+    <section>
+        <div class="containerCaderno">
+            <h2>Meus cadernos</h2>
+            <div class="btnDiv">
+                <button data-modal="modalCaderno" class="btn criarCaderno openModal" type="submit">Criar
+                    caderno</button>
+            </div>
+        </div>
+
+        <div class="ContainerListaCaderno">
+            <div class="cardCaderno">
+                <div class="tituloCaderno">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                                <path
+                                        d="M336 496L160 496C151.2 496 144 488.8 144 480L144 160C144 151.2 151.2 144 160 144L480 144C488.8 144 496 151.2 496 160L496 336L408 336C368.2 336 336 368.2 336 408L336 496zM476.1 384L384 476.1L384 408C384 394.7 394.7 384 408 384L476.1 384zM96 480C96 515.3 124.7 544 160 544L357.5 544C374.5 544 390.8 537.3 402.8 525.3L525.3 402.7C537.3 390.7 544 374.4 544 357.4L544 160C544 124.7 515.3 96 480 96L160 96C124.7 96 96 124.7 96 160L96 480z" />
+                            </svg></span>
+                    <div>
+                        <h4>titulo caderno</h4>
+                        <h6>matéria</h6>
+                    </div>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+            </div>
+
+            <div class="cardCaderno">
+                <div class="tituloCaderno">
+                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                                <path
+                                        d="M336 496L160 496C151.2 496 144 488.8 144 480L144 160C144 151.2 151.2 144 160 144L480 144C488.8 144 496 151.2 496 160L496 336L408 336C368.2 336 336 368.2 336 408L336 496zM476.1 384L384 476.1L384 408C384 394.7 394.7 384 408 384L476.1 384zM96 480C96 515.3 124.7 544 160 544L357.5 544C374.5 544 390.8 537.3 402.8 525.3L525.3 402.7C537.3 390.7 544 374.4 544 357.4L544 160C544 124.7 515.3 96 480 96L160 96C124.7 96 96 124.7 96 160L96 480z" />
+                            </svg></span>
+                    <div>
+                        <h4>titulo caderno</h4>
+                        <h6>matéria</h6>
+                    </div>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+            </div>
+
+        </div>
+
+        <!-- Modal caderno -->
+        <div class="modal" id="modalCaderno">
+            <div class="modalContentCaderno">
+                <div class="modalHeader">
+                    <h2>Criar caderno</h2>
+                    <span class="close">X</span>
+                </div>
+                <div class="containerInput">
+                    <label for="nomeCaderno">Nome</label>
+                    <input id="nomeCaderno" type="text" placeholder="Digite o nome da matéria">
+                </div>
+                <div class="containerInput">
+                    <label for="materias">matéria</label>
+                    <select id="materias" name="">
+                        <option value="">java</option>
+                        <option value="">Javascript</option>
+                    </select>
+                </div>
+                <button class="btn criarCaderno ">Criar caderno</button>
+            </div>
+        </div>
+
+    </section>
+</main>
+<script th:src="@{/script.js}" defer></script>
+</body>
+</html>

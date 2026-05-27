@@ -1,5 +1,220 @@
-*{
+* {
+    font-family: Arial, Helvetica, sans-serif;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+body {
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+:root {
+    --var-corDoFundo: #e6e3e3;
+    --var-CorContainer: #FAFAFA;
+    --var-CorBtn: #E11D2A;
+    --var-CorBtnHover: #8a121a;
+    --var-Corplaceholder: #a8a8a8;
+    --var-corSideBar: #DFDFDF;
+
+    /* dark mode */
+    --var-DarkMode-corFundo: #191919;
+    --var-DarkMode-corContainers: #2f2f2f;
+    --var-DarkMode-corPlaceholder: #3a3a3a;
+    --var-DarkMode-corDaFonte: #F3F3F3;
+    --var-DarkMode-corDosIcones: #FFFFFF;
+    --var-DarkMode-corNav: #343434;
+    --var-DarkMode-corSidebar: #333333;
+
+    /* cor svg */
+    --var-corsvg: #272727;
+}
+
+.btnDiv {
+    margin: auto 0;
+    text-align: center;
+
+}
+
+.btn {
+    background-color: var(--var-CorBtn);
+    color: #ffff;
+    padding: 10px;
+    width: 140px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn:hover {
+    background-color: var(--var-CorBtnHover);
+}
+
+.sunDarkmode{
+    display: none;
+}
+
+body.dark-mode,
+.darkMode{
+    background-color: var(--var-DarkMode-corFundo);
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body.dark-mode svg,
+.darkMode svg{
+    fill: var(--var-DarkMode-corDosIcones);
+}
+
+body.dark-mode header,
+body.dark-mode aside,
+.darkMode aside{
+    background-color: var(--var-DarkMode-corSidebar);
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+body.dark-mode main,
+body.dark-mode .fullOpen,
+body.dark-mode .containerAberto{
+    background-color: var(--var-DarkMode-corFundo);
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+
+body.dark-mode .modalContentCaderno,
+body.dark-mode .modalContent,
+.darkMode .modalContentCaderno,
+.darkMode .modalContent{
+    background-color: var(--var-DarkMode-corContainers);
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+body.dark-mode .modalContent span,
+.darkMode .modalContent span{
+    color: var(--var-DarkMode-corDosIcones);
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea,
+body.dark-mode .noteEditor,
+body.dark-mode .modalContentCaderno input,
+.darkMode .modalContentCaderno input{
+    background-color: var(--var-DarkMode-corPlaceholder);
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+body.dark-mode .cardMateria,
+body.dark-mode .cardCaderno,
+body.dark-mode .matterPageTitle,
+body.dark-mode .nomeNota,
+body.dark-mode .nota{
+    background-color: var(--var-DarkMode-corContainers);
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+body.dark-mode .cardMateria:hover,
+body.dark-mode .cardCaderno:hover,
+body.dark-mode .nomeNota:hover,
+body.dark-mode .nomeNota.is-active{
+    background-color: #3b3b3b;
+}
+
+body.dark-mode .editorToolbar{
+    border-color: #4a4a4a;
+}
+
+body.dark-mode .editorToolbar button{
+    background-color: #454545;
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+body.dark-mode .editIconButton,
+body.dark-mode .editMatterButton,
+body.dark-mode .editCadernoButton{
+    background-color: #454545;
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+body.dark-mode .editorToolbar button:hover{
+    background-color: #555555;
+}
+
+body.dark-mode .editIconButton:hover,
+body.dark-mode .editMatterButton:hover,
+body.dark-mode .editCadernoButton:hover{
+    background-color: #555555;
+}
+
+body.dark-mode .deleteIconButton,
+body.dark-mode .deleteNoteButton{
+    color: #dddddd;
+}
+
+body.dark-mode .deleteIconButton:hover,
+body.dark-mode .deleteNoteButton:hover{
+    background-color: #e11d2a30;
+    color: #ff6f78;
+}
+
+body.dark-mode .noteEditDate,
+body.dark-mode .autosaveStatus,
+body.dark-mode .emptyNotesState{
+    color: #c8c8c8;
+}
+
+body.dark-mode .modalContentCaderno span,
+.darkMode .modalContentCaderno span{
+    color: var(--var-DarkMode-corDosIcones);
+}
+
+body.dark-mode option,
+.darkMode option{
+    background-color: var(--var-Corplaceholder);
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+body.dark-mode .modalSair,
+.darkMode .modalSair{
+    background-color: var(--var-CorContainer);
+    color: #000000;
+}
+
+.darkHeader{
+    background-color: var(--var-DarkMode-corSidebar);
+    color: var(--var-DarkMode-corDaFonte);
+
+}
+
+body.dark-mode .btnMateria,
+.darkMode .btnMateria{
+    color: var(--var-DarkMode-corDaFonte);
+}
+
+body.dark-mode .criarNota img,
+.darkMode .criarNota img{
+    background-color: var(--var-DarkMode-corFundo);
+}
+
+body.dark-mode .profile svg,
+.darkMode .profile svg{
+    fill: var(--var-DarkMode-corDosIcones);
+}
+
+.darkHeader svg,
+body.dark-mode .profile svg,
+.darkMode .profile svg{
+    fill: var(--var-DarkMode-corDosIcones);
+}
+
+body.dark-mode #btnDarkmode {
+    display: none;
+}
+
+body.dark-mode #sunDarkmode {
+    display: inline-block;
 }

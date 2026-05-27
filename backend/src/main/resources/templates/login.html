@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" th:href="@{loginRegister.css}">
-    <link rel="stylesheet" th:href="@{reset.css}">
+    <link rel="stylesheet" th:href="@{/loginRegister.css}">
+    <link rel="stylesheet" th:href="@{/reset.css}">
     <title>NoteLab</title>
 </head>
 <body>
 
 <div class="containerLogo">
-    <img src=".././img/logo.png" alt="notelab-logo">
+    <img th:src="@{/img/logo.png}"  alt="notelab-logo">
 </div>
 
 <section class="containerInfo">
@@ -21,23 +20,24 @@
     </div>
 
     <div class="card">
+        <p th:if="${param.error}" style="color:red;">E-mail ou senha inválidos.</p>
 
-        <form class="formDiv" th:object="${user}" method="post" th:action=" @{/logar}">
+        <form class="formDiv" method="post" th:action="@{/login}">
             <div class="formbox">
                 <label>Digite seu e-mail</label>
-                <input type="email" placeholder="email@email.com" th:field="*{email}">
+                <input type="email" name="email" placeholder="email@email.com">
             </div>
             <div class="formbox">
                 <label>Senha</label>
-                <input type="password" placeholder="senha" th:field="*{password}">
-
+                <input type="password" name="password" placeholder="senha">
             </div>
             <div class="registerDiv">
-                Não tem conta? <a th:href="@{/register}"> Cadastre-se</a>
+                Não tem conta? <a th:href="@{/register}">Cadastre-se</a>
             </div>
-            <div class="btnDiv"><button class="btn" type="submit">Entrar</button></div>
+            <div class="btnDiv">
+                <button class="btn" type="submit">Entrar</button>
+            </div>
         </form>
-
     </div>
 </section>
 </body>
