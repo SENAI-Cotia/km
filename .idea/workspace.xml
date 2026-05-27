@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20515671-f8a0-48a5-b5ed-df73554361b9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/CadernoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/CadernoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/MatterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Controllers/MatterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/CadernoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/CadernoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/MatterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/br/com/notelab/backend/Services/MatterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/homeCaderno.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/homeCaderno.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/reset.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/reset.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/matter.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/matter.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

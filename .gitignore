@@ -1,3 +1,10 @@
+# Spring Boot / Maven
+target/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
 # Logs
 logs
 *.log
